@@ -25,7 +25,7 @@
         <nav class="navbar navbar-expand-md navbar-dark shadow-sm " style="background-color: #455054 ;">
             <div class="container">
                 <a class="navbar-brand" href="{{ url('/') }}">
-                    {{ config('app.name', 'Laravel') }}
+                    อยู่ดีแมนชั่น
                 </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>
@@ -50,6 +50,19 @@
                                 </li>
                             @endif
                         @else
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">{{ ('ห้องพัก') }}</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">{{ ('การทำสัญญา') }}</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">{{ ('การเงิน') }}</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">{{ ('ผู้อยู่อาศัย') }}</a>
+                            </li>
+
                             <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                     {{ Auth::user()->username  }}
