@@ -25,8 +25,7 @@ use App\Http\Controllers\DormitoryController;//เรียกแบบกำห
 Route::resource('dormitory', 'App\Http\Controllers\DormitoryController');//เรียกแบบresource แบบใหม่
 
 Route::get('/', function () {
-    // return view('welcome');
-    return view('auth/login');
+    return view('welcome');
 });
 
 Auth::routes();
