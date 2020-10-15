@@ -56,7 +56,7 @@ class RoomController extends Controller
      */
     public function edit($id)
     {
-        //
+        return view('room.edit');
     }
 
     /**
