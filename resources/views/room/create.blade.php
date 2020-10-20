@@ -79,7 +79,7 @@
                     <div class="form-inline">
                         <div class="form-group col-xs-12 col-sm-12 col-md-12 my-2">
                             <label class="col-sm-2">เลขที่ห้อง</label>
-                            <input type="text" class="form-control col-sm-6" name="rooms_code" id="rooms_code" placeholder="เช่น: ทดสอบ">
+                            <input type="text" class="form-control col-sm-6" name="rooms_code" id="rooms_code" placeholder="เช่น: 101">
 
                             <label class="col-sm-2">ชั้น</label>
                             <div class = "col-sm-2">
@@ -153,7 +153,7 @@
                                 <a class="btn btn-warning" href="{{ route('room.edit',$room->id) }}" >แก้ไขข้อมูล</a>
 
                                 @method('DELETE')
-                                <button class="btn btn-danger" type="submit">ลบข้อมูล</button>
+                                <button value="DELETE"  data-name="{{$room->rooms_code}}" class="btn btn-danger deleteform" type="submit">ลบข้อมูล</button>
 
                             </form>
                             </center>
