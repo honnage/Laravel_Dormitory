@@ -36,7 +36,7 @@ class Handler extends ExceptionHandler
         //
     }
 
-    public function render($request, Throwable $error404)
+    public function render($request, Throwable $error404,$error503)
     {
         if($this->isHttpException($error404)){
             $code = $error404->getStatusCode();
@@ -44,6 +44,16 @@ class Handler extends ExceptionHandler
                 return response()->view('layouts.404');
             }
         }
-        return parent::render($request, $error404);
+
+        if($this->isHttpException($error503)){
+            $code = $error503->getStatusCode();
+            if($code == '503'){
+                return response()->view('layouts.503');
+            }
+        }
+
+        return parent::render($request, $error404,$error503);
     }
+
+
 }
