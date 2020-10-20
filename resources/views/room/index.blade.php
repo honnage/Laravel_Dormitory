@@ -2,7 +2,6 @@
 @extends('layouts.app')
 
 @section('content')
-<script src="{{ asset('js/jquery.js') }}"></script>
 <script type="text/javascript">
     $(function() {
 
