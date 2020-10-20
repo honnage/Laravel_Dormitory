@@ -113,52 +113,6 @@
             </div>
         </div>
     </div>
-
-    <div class="card my-5">
-        <div class="card-header" style="background-color: black; color: white"><strong> ข้อมูลห้องพัก </strong></div>
-            {{-- <div class="card-body"> --}}
-                <table class="table table-striped">
-                    <thead>
-                    <tr>
-                        {{-- <th scope="col">#</th> --}}
-                        <th scope="col"><center>id</center></th>
-                        <th scope="col"><center>ห้อง</center></th>
-                        <th scope="col"><center>ชั้น</center></th>
-                        <th scope="col"><center>ประเภทห้อง</center></th>
-                        {{-- <th scope="col"><center>จำนวน</center></th> --}}
-                        <th scope="col"><center>ตัวดำเนิดการ</center></th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                        @foreach($rooms as $room)
-                        <tr>
-                            <th scope="row">{{$room->id}}</th>
-                            <td>{{$room->rooms_code}}</td>
-                            <td>{{$room->rooms_floor}}</td>
-                            <td>
-                                <center>
-                                    @if( $room->rooms_roomtype == 1 )
-                                        <p style="color: #00cc00"> ห้องพักพัดลม</p>
-                                    @elseif($room->rooms_roomtype == 2)
-                                        <p style="color: #ff1a1a"> ห้องพักปรับอากาศ </p>
-                                    @else
-                                        <p>ยังไม่ได้ตรวจ</p>
-                                    @endif
-                                </center>
-                            </td>
-                            <td>
-
-                            </td>
-                            <td>
-
-                            </td>
-                        </tr>
-                        @endforeach
-                    </tbody>
-                </table>
-            {{-- </div> --}}
-        </div>
-
 </div>
 
 
