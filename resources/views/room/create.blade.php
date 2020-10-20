@@ -103,7 +103,7 @@
                             </select>
                             <label class="col-sm-2"></label>
                             <button class="btn btn-secondary col-sm-2" type="reset">ยกเลิก</button>
-                            <button type="submit" name="submit" class="btn btn-success col-sm-2">ยืนยัน</button>
+                            <button type="submit" name="submit" class="btn btn-success col-sm-2">บันทึก</button>
                             {{-- <input type="submit" value="submit"  class="btn btn-success col-sm-2 confirm"> --}}
                         </div>
                     </div>
@@ -113,7 +113,50 @@
         </div>
     </div>
 </div>
+<div class="container my-4">
+    <div class="row justify-content-center">
+        <div class="col-md-12">
+        <div class="card-header" style="background-color: black; color: white"><strong> ข้อมูลห้องพัก </strong></div>
+            <table class="table table-striped">
+                <thead>
+                <tr>
+                    <th scope="col"><center>id</center></th>
+                    <th scope="col"><center>ห้อง</center></th>
+                    <th scope="col"><center>ชั้น</center></th>
+                    <th scope="col"><center>ประเภทห้อง</center></th>
+                    <th scope="col"><center>ตัวดำเนิดการ</center></th>
+                </tr>
+                </thead>
+                <tbody>
+                    @foreach($rooms as $room)
+                    <tr>
+                        <th>{{$room->id}}</th>
+                        <td><center>{{$room->rooms_code}}</center></td>
+                        <td><center>{{$room->rooms_floor}}</center></td>
+                        <td>
+                            <center>
+                                @if( $room->rooms_roomtype == 1 )
+                                    <p style="color: #000000"> ห้องพักพัดลม</p>
+                                @elseif($room->rooms_roomtype == 2)
+                                    <p style="color: #000000"> ห้องพักปรับอากาศ </p>
+                                @else
+                                    <p>ยังไม่ได้ตรวจ</p>
+                                @endif
+                            </center>
+                        </td>
+                        <td>
 
+                        </td>
+                        <td>
+
+                        </td>
+                    </tr>
+                    @endforeach
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
 
 
 @endsection
