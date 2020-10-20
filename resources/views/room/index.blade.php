@@ -73,7 +73,7 @@
         <div class="row justify-content-center">
             <div class="col-md-12">
                 <div class="card">
-                <form action="/subjects" method="post" id="data" style="display: none;">
+                <form action="/room" method="post" id="data" style="display: none;">
                     <div class="card-header">
                         บันทึกข้อมูลห้อง
                     </div>

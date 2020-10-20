@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\RoomModel;
 
 class RoomController extends Controller
 {
@@ -23,7 +24,8 @@ class RoomController extends Controller
      */
     public function create()
     {
-        return view('room.create');
+        $rooms = RoomModel::all();
+        return view('room.create',compact('rooms'));
     }
 
     /**
@@ -34,7 +36,19 @@ class RoomController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'rooms_code' => 'required|unique:rooms',
+            'rooms_floor' => 'required',
+            'rooms_roomtype' => 'required',
+        ]);
+
+        $room = new RoomModel();
+        $room->rooms_code = $request->rooms_code;
+        $room->rooms_floor = $request->rooms_floor;
+        $room->rooms_roomtype = $request->rooms_roomtype;
+
+        $room->save();
+        return redirect('/room');
     }
 
     /**
