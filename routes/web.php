@@ -32,5 +32,8 @@ Auth::routes();
 
 Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::resource('/room', 'App\Http\Controllers\RoomController');
+Route::resource('/customer', 'App\Http\Controllers\CustomerController');
+Route::resource('/booking', 'App\Http\Controllers\BookingController');
+
 
 Route::get('/test1', 'App\Http\Controllers\JSController@index');

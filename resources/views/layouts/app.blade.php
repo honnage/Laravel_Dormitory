@@ -18,6 +18,10 @@
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
 
     <!-- Scripts -->
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js"></script>
+    <script src="{{ asset('js/bonus.js') }}"></script>
+    <script src="{{ asset('js/update.js') }}"></script>
     <script src="{{ asset('js/app.js') }}" defer></script>
 
     <!-- Fonts -->
@@ -26,10 +30,7 @@
     <!-- Styles -->
     {{-- <link href="{{ asset('css/app.css') }}" rel="stylesheet"> --}}
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js"></script>
-    <script src="{{ asset('js/bonus.js') }}"></script>
-    <script src="{{ asset('js/update.js') }}"></script>
+    <script src="{{ asset('css/design.css') }}" defer></script>
 
 
 
@@ -69,13 +70,13 @@
                                 <a class="nav-link" href="/room">{{ ('ห้องพัก') }}</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="#">{{ ('การทำสัญญา') }}</a>
+                                <a class="nav-link" href="/booking">{{ ('การทำสัญญา') }}</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" href="#">{{ ('การเงิน') }}</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="#">{{ ('ผู้อยู่อาศัย') }}</a>
+                                <a class="nav-link" href="/customer">{{ ('ผู้อยู่อาศัย') }}</a>
                             </li>
 
                             <li class="nav-item dropdown">
