@@ -71,7 +71,9 @@ class RoomController extends Controller
      */
     public function edit($id)
     {
-        return view('room.edit');
+        $dataall = RoomModel::all();
+        $rooms = DB::table("rooms")->where('id','=',$id)->get();
+        return view('room.edit',compact('rooms','dataall'));
     }
 
     /**
@@ -83,7 +85,24 @@ class RoomController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+
+        $request->validate([
+            'rooms_code' => 'required',
+            'rooms_floor' => 'required',
+            'rooms_roomtype' => 'required',
+
+        ]);
+
+        DB::table('rooms')
+            ->where('id','=',$id)
+            ->update([
+            'rooms_code' => $request->rooms_code,
+            'rooms_floor' => $request->rooms_floor,
+            'rooms_roomtype' => $request->rooms_roomtype,
+
+        ]);
+        // Session()->flash("success","อัพเดทข้อมูลเรียบร้อยแล้ว!");
+        return redirect('room/create');
     }
 
     /**
