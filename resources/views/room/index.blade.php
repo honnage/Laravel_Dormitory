@@ -16,12 +16,12 @@
   <div id="p1" class="form-group col-xs-12 col-sm-12 col-md-12 ">
         <h1>เพื่มข้อมูลห้อง</h1>
         <a href="" class="btn btn-outline-light" style="background-color: dimgray">ชั้น 1</a>
-        <a href="" class="btn btn-outline-light" style="background-color: cadetblue">ชั้น 2</a>
-        <a href="" class="btn btn-outline-light" style="background-color: indianred">ชั้น 3</a>
-        <a href="" class="btn btn-outline-light" style="background-color: coral">ชั้น 4</a>
-        <a href="" class="btn btn-outline-light" style="background-color: limegreen">ชั้น 5</a>
-        <a href="" class="btn btn-outline-light" style="background-color: dodgerblue">ชั้น 6</a>
-        <a href="/room/create" class="col-sm-2  btn btn-outline-light" style="background-color: darkorchid; position:absolute ; right:0 "> ห้องทั้งหมด</a>
+        <a href="" class="btn btn-outline-light" style="background-color: indianred">ชั้น 2</a>
+        <a href="" class="btn btn-outline-light" style="background-color: coral">ชั้น 3</a>
+        <a href="" class="btn btn-outline-light" style="background-color: sandybrown">ชั้น 4</a>
+        <a href="" class="btn btn-outline-light" style="background-color: dodgerblue">ชั้น 5</a>
+        <a href="" class="btn btn-outline-light" style="background-color: darkorchid">ชั้น 6</a>
+        <a href="/room/create" class="col-sm-2  btn btn-outline-light" style="background-color: green; position:absolute ; right:0 "> ห้องทั้งหมด</a>
 
   </div>
 
