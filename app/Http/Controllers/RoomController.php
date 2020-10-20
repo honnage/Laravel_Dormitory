@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\RoomModel;
+use Illuminate\Support\Facades\DB;
 
 class RoomController extends Controller
 {
@@ -48,7 +49,7 @@ class RoomController extends Controller
         $room->rooms_roomtype = $request->rooms_roomtype;
 
         $room->save();
-        return redirect('/room');
+        return redirect('/room/create');
     }
 
     /**
@@ -93,6 +94,8 @@ class RoomController extends Controller
      */
     public function destroy($id)
     {
-        //
+        DB::table('rooms')->where('id','=',$id)->delete();
+        // Session()->flash("success","ลบข้อมูลเรียบร้อยแล้ว!");
+        return redirect('room/create');
     }
 }

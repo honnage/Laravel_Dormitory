@@ -31,6 +31,6 @@ use Illuminate\Support\Facades\Route;
 Auth::routes();
 
 Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-Route::resource('room', 'App\Http\Controllers\RoomController');
+Route::resource('/room', 'App\Http\Controllers\RoomController');
 
 Route::get('/test1', 'App\Http\Controllers\JSController@index');

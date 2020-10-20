@@ -62,7 +62,7 @@
                             @endif
                         @else
                             <li class="nav-item">
-                                <a class="nav-link" href="#">{{ ('ห้องพัก') }}</a>
+                                <a class="nav-link" href="/room">{{ ('ห้องพัก') }}</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" href="#">{{ ('การทำสัญญา') }}</a>
