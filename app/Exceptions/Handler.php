@@ -4,7 +4,7 @@ namespace App\Exceptions;
 
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
 use Throwable;
-use Exception;
+// use Exception;
 
 class Handler extends ExceptionHandler
 {
@@ -37,17 +37,53 @@ class Handler extends ExceptionHandler
         //
     }
 
-
-    public function render($request, Exception $error404)
+    public function render($request, Throwable $error)
     {
-        if($this->isHttpException($error404)){
-            $code = $error404->getStatusCode();
+        if($this->isHttpException($error)){
+            $code = $error->getStatusCode();
+            if($code == '401'){
+                return response()->view('layouts.401');
+            }
+        }
+
+        if($this->isHttpException($error)){
+            $code = $error->getStatusCode();
+            if($code == '403'){
+                return response()->view('layouts.403');
+            }
+        }
+
+        if($this->isHttpException($error)){
+            $code = $error->getStatusCode();
             if($code == '404'){
                 return response()->view('layouts.404');
             }
         }
 
-        return parent::render($request, $error404);
+        if($this->isHttpException($error)){
+            $code = $error->getStatusCode();
+            if($code == '419'){
+                return response()->view('layouts.419');
+            }
+        }
+
+        if($this->isHttpException($error)){
+            $code = $error->getStatusCode();
+            if($code == '500'){
+                return response()->view('layouts.500');
+            }
+        }
+
+
+
+        if($this->isHttpException($error)){
+            $code = $error->getStatusCode();
+            if($code == '503'){
+                return response()->view('layouts.503');
+            }
+        }
+        return parent::render($request, $error);
     }
+
 
 }
