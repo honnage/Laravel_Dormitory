@@ -26,7 +26,7 @@ class RoomController extends Controller
      */
     public function create()
     {
-        $rooms = RoomModel::all();
+        $rooms =  DB::table("rooms")->orderBy('rooms_code')->get();
         return view('room.create',compact('rooms'));
     }
 
@@ -50,7 +50,7 @@ class RoomController extends Controller
         $room->rooms_roomtype = $request->rooms_roomtype;
 
         $room->save();
-        return redirect('/room/create');
+        return redirect('room/create');
     }
 
     /**

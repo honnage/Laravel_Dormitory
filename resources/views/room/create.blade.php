@@ -35,7 +35,7 @@
     </div>
 
   {{-- <div id="data"> --}}
-    <div class="container my-4">
+    <div class="container ">
         <div class="row justify-content-center">
             <div class="col-md-12">
                 <div class="card">
@@ -71,7 +71,9 @@
                             </select>
                             <label class="col-sm-2"></label>
                             <button type="reset" class="btn btn-secondary col-sm-2">ยกเลิก</button>
-                            <button type="submit" name="submit" class="btn btn-success col-sm-2">บันทึก</button>
+                            {{-- <button type="submit"  value="submit" name="submit" class="btn btn-success col-sm-2">บันทึก</button> --}}
+                            <button type="submit" value="submit"  class="btn btn-success save col-sm-2">บันทึก</button>
+
                             {{-- <input type="submit" value="submit"  class="btn btn-success col-sm-2 confirm"> --}}
                         </div>
                     </div>
@@ -118,10 +120,10 @@
                                 @csrf
 
                                 {{-- <a class="btn btn-primary" href="{{ route('dormitory.show',$dorm->id) }}" >แสดงข้อมูล</a> --}}
-                                <a class="btn btn-warning" href="{{ route('room.edit',$room->id) }}" >แก้ไขข้อมูล</a>
+                                <a class="btn btn-warning col-sm-3" href="{{ route('room.edit',$room->id) }}" >แก้ไขข้อมูล</a>
 
                                 @method('DELETE')
-                                <button value="DELETE"  data-name="{{$room->rooms_code}}" class="btn btn-danger deleteform" type="submit">ลบข้อมูล</button>
+                                <button value="DELETE"  data-name="{{$room->rooms_code}}" class="btn btn-danger deleteform col-sm-3" type="submit">ลบข้อมูล</button>
 
                             </form>
                             </center>

@@ -1,11 +1,11 @@
 $(document).ready(function(){
-    $('.update').click(function(evt){
+    $('.save').click(function(evt){
         // var name=$(this).data("name");
         var form=$(this).closest("form");
         evt.preventDefault();
         swal({
-            title:`อัพเดทข้อมูลเรียบร้อย`,
-            text:`ระบบได้อัพเดทข้อมูลห้องนี้ เรียบร้อบแล้ว`,
+            title:`บันทึกข้อมูลเรียบร้อย`,
+            text:`ระบบได้บันทึกข้อมูลนี้ เรียบร้อบแล้ว`,
             icon:"success",
             buttons:true,
             // dangerMode:true

@@ -9,7 +9,19 @@
 
     <title>{{ config('app.name', 'Laravel') }}</title>
 
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous"><!-- icon -->
+    <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
+
+
     <!-- Scripts -->
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js"></script>
+    <script src="{{ asset('js/bonus.js') }}"></script>
+    <script src="{{ asset('js/update.js') }}"></script>
+    <script src="{{ asset('js/save.js') }}"></script>
     <script src="{{ asset('js/app.js') }}" defer></script>
 
     <!-- Fonts -->
@@ -17,7 +29,10 @@
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
 
     <!-- Styles -->
-    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    {{-- <link href="{{ asset('css/app.css') }}" rel="stylesheet"> --}}
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <script src="{{ asset('css/design.css') }}" defer></script>
+
 </head>
 <body>
     <div id="app">
@@ -72,75 +87,7 @@
             </div>
         </nav>
 
-        <div class="container my-4">
-            <div class="row justify-content-center">
-                <div class="col-md-8">
-                    <div class="card">
-                        <div class="card-header">{{ __('Login') }}</div>
 
-                        <div class="card-body">
-                            <form method="POST" action="{{ route('login') }}">
-                                @csrf
-
-                                <div class="form-group row">
-                                    <label for="username" class="col-md-4 col-form-label text-md-right">{{ __('Username') }}</label>
-
-                                    <div class="col-md-6">
-                                        <input id="username" type="username" class="form-control @error('username') is-invalid @enderror" name="username" value="{{ old('username') }}" required autocomplete="username" autofocus>
-
-                                        @error('username')
-                                            <span class="invalid-feedback" role="alert">
-                                                <strong>{{ $message }}</strong>
-                                            </span>
-                                        @enderror
-                                    </div>
-                                </div>
-
-                                <div class="form-group row">
-                                    <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('Password') }}</label>
-
-                                    <div class="col-md-6">
-                                        <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="current-password">
-
-                                        @error('password')
-                                            <span class="invalid-feedback" role="alert">
-                                                <strong>{{ $message }}</strong>
-                                            </span>
-                                        @enderror
-                                    </div>
-                                </div>
-
-                                <div class="form-group row">
-                                    <div class="col-md-6 offset-md-4">
-                                        <div class="form-check">
-                                            <input class="form-check-input" type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>
-
-                                            <label class="form-check-label" for="remember">
-                                                {{ __('Remember Me') }}
-                                            </label>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="form-group row mb-0">
-                                    <div class="col-md-8 offset-md-4">
-                                        <button type="submit" class="btn btn-primary">
-                                            {{ __('Login') }}
-                                        </button>
-
-                                        @if (Route::has('password.request'))
-                                            <a class="btn btn-link" href="{{ route('password.request') }}">
-                                                {{ __('Forgot Your Password?') }}
-                                            </a>
-                                        @endif
-                                    </div>
-                                </div>
-                            </form>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
     </div>
 </body>
 </html>
