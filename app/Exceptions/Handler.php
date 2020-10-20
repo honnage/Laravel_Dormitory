@@ -5,6 +5,7 @@ namespace App\Exceptions;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
 use Throwable;
 
+
 class Handler extends ExceptionHandler
 {
     /**
@@ -36,7 +37,7 @@ class Handler extends ExceptionHandler
         //
     }
 
-    public function render($request, Throwable $error404,$error503)
+    public function render($request, Throwable $error404)
     {
         if($this->isHttpException($error404)){
             $code = $error404->getStatusCode();
@@ -45,15 +46,6 @@ class Handler extends ExceptionHandler
             }
         }
 
-        if($this->isHttpException($error503)){
-            $code = $error503->getStatusCode();
-            if($code == '503'){
-                return response()->view('layouts.503');
-            }
-        }
-
-        return parent::render($request, $error404,$error503);
+        return parent::render($request, $error404);
     }
-
-
 }
