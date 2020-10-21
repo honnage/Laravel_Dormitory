@@ -17,7 +17,7 @@ class CreateTableCustomers extends Migration
             $table->id();
             $table->string("customer_IDcard");
             $table->string("customer_firstname");
-            $table->string("customer_firstname");
+            $table->string("customer_lastname");
             $table->char("customer_gender");
             $table->string("customer_phone");
             $table->string("customer_email");

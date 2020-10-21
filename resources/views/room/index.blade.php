@@ -21,7 +21,7 @@
         <a href="" class="btn btn-outline-light" style="background-color: sandybrown">ชั้น 4</a>
         <a href="" class="btn btn-outline-light" style="background-color: dodgerblue">ชั้น 5</a>
         <a href="" class="btn btn-outline-light" style="background-color: darkorchid">ชั้น 6</a>
-        <a href="/room/create" class="col-sm-2  btn btn-outline-light" style="background-color: green; position:absolute ; right:0 "> ห้องทั้งหมด</a>
+        <a href="/room/create" class="col-sm-2  btn btn-outline-success" style="position:absolute ; right:0 "> ห้องทั้งหมด</a>
 
   </div>
 
