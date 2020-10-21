@@ -78,7 +78,7 @@
                                 <a class="nav-link" href="#">{{ ('การเงิน') }}</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="/customer">{{ ('ผู้อยู่อาศัย') }}</a>
+                                <a class="nav-link" href="{{ route('customer.index') }}">{{ ('ผู้อยู่อาศัย') }}</a>
                             </li>
 
                             <li class="nav-item dropdown">

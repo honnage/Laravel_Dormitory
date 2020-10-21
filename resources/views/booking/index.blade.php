@@ -48,7 +48,7 @@
                         <th scope="col"><center>ชื่อ</center></th>
                         <th scope="col"><center>นามสกุล</center></th>
                         <th scope="col"><center>ห้อง</center></th>
-                        {{-- <th scope="col"><center>ค่ามัดจำ</center></th> --}}
+                        <th scope="col"><center>ค่ามัดจำ</center></th>
                         <th scope="col"><center>สถานะการจ่ายเงินมัดจำ</center></th>
                         <th scope="col"><center>ตัวดำเนินการ</center></th>
                     </tr>
@@ -60,6 +60,7 @@
                             <td><center>{{$booking->customer_firstname}}</center></td>
                             <td><center>{{$booking->customer_lastname}}</center></td>
                             <td><center>{{$booking->room_id}}</center></td>
+                            <td><center>{{ number_format($booking->booking_deposit) }}</center></td>
                             <td>
                                 <center>
                                 @if( $booking->booking_statusPayment == "N")
