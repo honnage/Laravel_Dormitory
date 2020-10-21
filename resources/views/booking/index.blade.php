@@ -19,6 +19,8 @@
 
     });
 
+
+
     // $("div").animate({width:"200px", height:"200px",2000});
 
 </script>
@@ -31,7 +33,7 @@
         {{-- <div class="form-group col-xs-12 col-sm-12 col-md-12 my-3" style="position:absolute ; right:0"> --}}
         {{-- <button href="#" class="col-sm-2 slideDown_table btn btn-success fas fa-eye" style="float:right"> เปิดฟอร์ม</button>
         <button href="#" class="col-sm-2 slideUp_table btn btn-secondary fas fa-eye-slash" style="float:right"> ปิดฟอร์ม</button> --}}
-        <a href="/room/create" class="col-sm-2  btn btn-outline-primary" style="position:absolute ; right:0 "> ประวิตัทั้งหมด</a>
+        <a href="/booking/overview" class="col-sm-2  btn btn-outline-primary" style="position:absolute ; right:0 "> ประวิตัทั้งหมด</a>
 
     </h1>
     </div>
@@ -40,8 +42,17 @@
     <div class="container ">
         <div class="row justify-content-center">
             <div class="col-md-12">
+                @if($errors->any())
+                    <div class="alert alert-danger">
+                        <ul>
+                            @foreach($errors->all() as $error)
+                                <li>{{ $error }}</li>
+                            @endforeach
+                        </ul>
+                    </div>
+                @endif
                 <div class="card">
-                <form action="/room" method="post" id="data">
+                <form action="{{ route('booking.store') }}" id="validate_form"  method="post" id="data">
                     <div class="card-header">
                         บันทึกข้อมูลการทำสัญญา
                     </div>
@@ -54,7 +65,7 @@
                             <label class="col-sm-2">เพศ : &nbsp;<strong style="color: red">*</strong></label>
                             <div class = "col-sm-2">
                                 <select class="form-control" name="customer_gender">
-                                    <option value="">โปรดเลือกระบุเพศ</option>
+                                    {{-- <option value="">โปรดเลือกระบุเพศ</option> --}}
                                     <option value="M">--- ชาย ---</option>
                                     <option value="F">--- หญิง ---</option>
                                 </select>
@@ -95,7 +106,7 @@
                             <label class="col-sm-2" style="float:right">ระยะเวลาสัญญา : &nbsp;<strong style="color: red">*</strong></label>
                             <div class = "col-sm-3">
                                 <select class="form-control" name="booking_timeperiod">
-                                    <option value="">--โปรดเลือกระยะเวลาสัญญา--</option>
+                                    <option value="-">--โปรดเลือกระยะเวลาสัญญา--</option>
                                     <option value="6M">6 เดือน </option>
                                     <option value="1Y">12 เดือน </option>
                                 </select>
@@ -120,7 +131,11 @@
         </div>
     </div>
 </div>
-
+<script>
+    $(document).ready(function(){
+        $('#validate_form').parsley();
+    })
+</script>
 
 @endsection
 

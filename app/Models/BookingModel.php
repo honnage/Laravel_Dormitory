@@ -10,6 +10,7 @@ class BookingModel extends Model
     // use HasFactory;
     protected $table="booking";
     protected $fillable = [
+        // 'booking_code',
         'customer_ID',
         'room_id',
         'booking_deposit',

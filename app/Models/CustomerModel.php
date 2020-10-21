@@ -17,5 +17,10 @@ class CustomerModel extends Model
         'customer_phone',
         'customer_email',
         'customer_address',
+        'room_id',
+        'booking_deposit',
+        'booking_timeperiod',
+        'booking_status',
+
     ];
 }

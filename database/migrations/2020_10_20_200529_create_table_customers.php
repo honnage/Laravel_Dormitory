@@ -18,10 +18,14 @@ class CreateTableCustomers extends Migration
             $table->string("customer_IDcard");
             $table->string("customer_firstname");
             $table->string("customer_lastname");
-            $table->char("customer_gender");
+            $table->string("customer_gender");
             $table->string("customer_phone");
             $table->string("customer_email");
             $table->string("customer_address");
+            $table->string("room_id");
+            $table->integer("booking_deposit");
+            $table->integer("booking_status");
+            $table->string("booking_timeperiod");
             $table->timestamps();
         });
     }
