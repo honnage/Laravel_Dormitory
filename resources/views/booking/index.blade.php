@@ -19,8 +19,6 @@
 
     });
 
-
-
     // $("div").animate({width:"200px", height:"200px",2000});
 
 </script>
@@ -29,113 +27,76 @@
 <div class="container">
   <br>
     <div id="p1" class="form-group col-xs-12 col-sm-12 col-md-12 ">
-    <h1>การทำสัญญา
+    <h1>ข้อมูลการทำสัญญา
         {{-- <div class="form-group col-xs-12 col-sm-12 col-md-12 my-3" style="position:absolute ; right:0"> --}}
-        {{-- <button href="#" class="col-sm-2 slideDown_table btn btn-success fas fa-eye" style="float:right"> เปิดฟอร์ม</button>
-        <button href="#" class="col-sm-2 slideUp_table btn btn-secondary fas fa-eye-slash" style="float:right"> ปิดฟอร์ม</button> --}}
-        <a href="/booking/overview" class="col-sm-2  btn btn-outline-primary" style="position:absolute ; right:0 "> ประวิตัทั้งหมด</a>
-
+        <a href="{{ route('booking.create') }}" class="col-sm-2 btn btn-outline-success" style="float:right"> ทำสัญญา</a>
+        <a href="{{ route('booking.index') }}" class="col-sm-2 btn btn-outline-primary" style="float:right"> ประวัติ</a>
     </h1>
     </div>
 
-  {{-- <div id="data"> --}}
-    <div class="container ">
+
+
+    <div class="container my-4">
         <div class="row justify-content-center">
             <div class="col-md-12">
-                @if($errors->any())
-                    <div class="alert alert-danger">
-                        <ul>
-                            @foreach($errors->all() as $error)
-                                <li>{{ $error }}</li>
-                            @endforeach
-                        </ul>
-                    </div>
-                @endif
-                <div class="card">
-                <form action="{{ route('booking.store') }}" id="validate_form"  method="post" id="data">
-                    <div class="card-header">
-                        บันทึกข้อมูลการทำสัญญา
-                    </div>
-                    {{csrf_field()}}
-                    <div class="form-inline">
-                        <div class="form-group col-xs-12 col-sm-12 col-md-12 my-3">
-                            <label class="col-sm-2">เลขบัตรประชาชน : &nbsp;<strong style="color: red">*</strong></label>
-                            <input type="text" class="form-control col-sm-6" name="customer_IDcard" id="customer_IDcard" placeholder="โปรดระบุ เลขบัตรประชาชน">
+            <div class="card-header" ><strong> ข้อมูลห้องพักทั้งหมด </strong></div>
+            <div class="card">
+                <table class="table table-striped">
+                    <thead>
+                    <tr style="background-color: rgb(35, 158, 117); color: white">
+                        <th scope="col"><center>ID</center></th>
+                        <th scope="col"><center>ชื่อ</center></th>
+                        <th scope="col"><center>นามสกุล</center></th>
+                        <th scope="col"><center>ห้อง</center></th>
+                        {{-- <th scope="col"><center>ค่ามัดจำ</center></th> --}}
+                        <th scope="col"><center>สถานะการจ่ายเงินมัดจำ</center></th>
+                        <th scope="col"><center>ตัวดำเนินการ</center></th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                        @foreach($bookings as $booking)
+                        <tr>
+                            <th>{{$booking->id}}</th>
+                            <td><center>{{$booking->customer_firstname}}</center></td>
+                            <td><center>{{$booking->customer_lastname}}</center></td>
+                            <td><center>{{$booking->room_id}}</center></td>
+                            <td>
+                                <center>
+                                @if( $booking->booking_statusPayment == "N")
+                                    <option value = "{{$booking->booking_statusPayment}}" style="color: crimson;">
+                                        ยังไม่ได้จ่ายค่ามัดจำ
+                                    </option>
+                                @elseif($booking->booking_statusPayment == "P")
+                                    <option value = "{{$booking->booking_statusPayment}}">
+                                        จ่ายเงินค่ามันจำแล้ว
+                                    </option>
+                                @endif
+                                </center>
+                                {{-- <center>{{$booking->booking_statusResidence}}</center> --}}
+                            </td>
+                            <td>
+                                <center>
+                                <form method="post" action="{{ route('booking.destroy',$booking->id) }}">
+                                    @csrf
 
-                            <label class="col-sm-2">เพศ : &nbsp;<strong style="color: red">*</strong></label>
-                            <div class = "col-sm-2">
-                                <select class="form-control" name="customer_gender">
-                                    {{-- <option value="">โปรดเลือกระบุเพศ</option> --}}
-                                    <option value="M">--- ชาย ---</option>
-                                    <option value="F">--- หญิง ---</option>
-                                </select>
-                            </div>
-                        </div>
+                                    <a class="btn btn-warning " href="{{ route('booking.edit',$booking->id) }}" >แก้ไขข้อมูล</a>
 
-                        <div class="form-group col-xs-12 col-sm-12 col-md-12 my-3">
-                            <label class="col-sm-2">ชื่อ : &nbsp;<strong style="color: red">*</strong></label>
-                            <input type="text" class="form-control col-sm-4" name="customer_firstname" id="customer_firstname" placeholder="โปรดระบุ ชื่อจริง">
+                                    {{-- @method('DELETE')
+                                    <button value="DELETE"  data-name="{{$room->rooms_code}}" class="btn btn-danger deleteform col-sm-3" type="submit">ลบข้อมูล</button> --}}
 
-                            <label class="col-sm-2">นามสกุล : &nbsp;<strong style="color: red">*</strong></label>
-                            <input type="text" class="form-control col-sm-4" name="customer_lastname" id="customer_lastname" placeholder="โปรดระบุ นามสกุลจริง">
-                        </div>
+                                </form>
+                                </center>
+                            </td>
 
-                        <div class="form-group col-xs-12 col-sm-12 col-md-12 my-3">
-                            <label class="col-sm-2">เบอร์โทรศัพท์ : &nbsp;<strong style="color: red">*</strong></label>
-                            <input type="text" class="form-control col-sm-4" name="customer_phone" id="customer_phone" placeholder="โปรดระบุ เบอร์โทรศัพท์">
-
-                            <label class="col-sm-2">อีเมล : &nbsp;<strong style="color: red">*</strong></label>
-                            <input type="text" class="form-control col-sm-4" name="customer_email" id="customer_email" placeholder="โปรดระบุ อีเมล">
-                        </div>
-
-                        <div class="form-group col-xs-12 col-sm-12 col-md-12 my-3">
-                            <label class="col-sm-2">ที่อยู่ : &nbsp;<strong style="color: red">*</strong></label>
-                            <input type="text" class="form-control col-sm-10" name="customer_address" id="customer_address" placeholder="โปรดระบุ ที่อยู่">
-                        </div>
-
-                        <div class="form-group col-xs-12 col-sm-12 col-md-12 my-3">
-                        </div>
-
-                        <div class="form-group col-xs-12 col-sm-12 col-md-12 my-2">
-                            <label class="col-sm-2" style="float:right">ห้อง : &nbsp;<strong style="color: red">*</strong></label>
-                            <input type="text" class="form-control col-sm-3" name="room_id" id="room_id" placeholder="เช้น 101">
-                            <label class="col-sm-5"></label>
-                        </div>
-
-                        <div class="form-group col-xs-12 col-sm-12 col-md-12 my-2">
-                            <label class="col-sm-2" style="float:right">ระยะเวลาสัญญา : &nbsp;<strong style="color: red">*</strong></label>
-                            <div class = "col-sm-3">
-                                <select class="form-control" name="booking_timeperiod">
-                                    <option value="-">--โปรดเลือกระยะเวลาสัญญา--</option>
-                                    <option value="6M">6 เดือน </option>
-                                    <option value="1Y">12 เดือน </option>
-                                </select>
-                            </div>
-                            <label class="col-sm-5"></label>
-                        </div>
-
-                        <div class="form-group col-xs-12 col-sm-12 col-md-12 my-2">
-                            <label class="col-sm-2">เงินค่ามัดจำ : &nbsp;<strong style="color: red">*</strong></label>
-                            <input type="text" class="form-control col-sm-3" name="booking_deposit" id="booking_deposit" placeholder="โปรดระบุ เงินค่ามัดจำ">
-                            <label class="col-sm-5"></label>
-                        </div>
-                    </div>
-                    <center>
-                        <button type="reset" class="btn btn-secondary col-sm-2">ยกเลิก</button>
-                        <button type="submit" value="submit"  class="btn btn-success save col-sm-2 my-4">บันทึก</button>
-                    </center>
-                </form>
-
-                </div>
+                        </tr>
+                        @endforeach
+                    </tbody>
+                </table>
             </div>
         </div>
     </div>
 </div>
-<script>
-    $(document).ready(function(){
-        $('#validate_form').parsley();
-    })
-</script>
+
 
 @endsection
 

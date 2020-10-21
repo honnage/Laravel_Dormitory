@@ -20,7 +20,8 @@ class CustomerModel extends Model
         'room_id',
         'booking_deposit',
         'booking_timeperiod',
-        'booking_status',
+        'booking_statusResidence',
+        'booking_statusPayment',
 
     ];
 }
