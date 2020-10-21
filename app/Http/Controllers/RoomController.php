@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\RoomModel;
+use App\Models\CustomerModel;
 use Illuminate\Support\Facades\DB;
 
 class RoomController extends Controller
@@ -16,7 +17,8 @@ class RoomController extends Controller
     public function index()
     {
         $rooms = RoomModel::all();
-        return view('room.index',compact('rooms'));
+        $customers = CustomerModel::all();
+        return view('room.index',compact('rooms','customers'));
     }
 
     /**

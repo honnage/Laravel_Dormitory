@@ -4,14 +4,13 @@
 @foreach($bookings as $booking)
 @endforeach
 <script type="text/javascript">
-
 </script>
 
 
 <div class="container">
   <br>
     <div id="p1" class="form-group col-xs-12 col-sm-12 col-md-12 ">
-    <h1>แก้ไขการทำสัญญา
+    <h1>แก้ไขข้อมูลผู้อาศัย
         {{-- <div class="form-group col-xs-12 col-sm-12 col-md-12 my-3" style="position:absolute ; right:0"> --}}
             <a href="{{ route('booking.create') }}" class="col-sm-2 btn btn-outline-success" style="float:right"> ทำสัญญา</a>
             <a href="{{ route('booking.index') }}" class="col-sm-2 btn btn-outline-primary" style="float:right"> ประวัติ</a>
@@ -33,31 +32,26 @@
                     </div>
                 @endif
                 <div class="card">
-                <form action="{{ route('booking.update',$booking->id) }}" method="post" id="data">
+                <form action="{{ route('customer.update',$booking->id) }}" method="post" id="data">
 
                     {{csrf_field()}}
                     @method('PUT')
 
                     <div class="card-header">
-                        แก้ไขข้อมูลการทำสัญญา
+                        แก้ไขข้อมูลผู้อยู่อาศัย
                     </div>
                     {{csrf_field()}}
                     <div class="form-inline">
                         <div class="form-group col-xs-12 col-sm-12 col-md-12 my-3">
                             <label class="col-sm-2">เลขบัตรประชาชน : &nbsp;<strong style="color: red">*</strong></label>
-                            <input type="text" class="form-control col-sm-6" name="customer_IDcard" id="customer_IDcard" style="color: blue; font-size: 20px" value="{{ $booking->customer_IDcard }}" readonly>
+                            <input type="text" class="form-control col-sm-6" name="customer_IDcard" id="customer_IDcard" style="color: blue; font-size: 20px" value="{{ $booking->customer_IDcard }}">
 
                             <label class="col-sm-2">เพศ : &nbsp;<strong style="color: red">*</strong></label>
-                            <input type="text" class="form-control col-sm-2" name="customer_gender" id="customer_gender" style="color: blue; font-size: 20px"
-                            @if( $booking->customer_gender == "M")
-                                value="เพศชาย"
-                            @elseif($booking->customer_gender == "F")
-                                value="เพศหญิง"
-                            @endif
-                            readonly>
-
-                            {{-- <div class = "col-sm-2">
+                            <div class = "col-sm-2">
                                 <select class="form-control" name="customer_gender">
+                                    {{-- <option value="">โปรดเลือกระบุเพศ</option> --}}
+                                    {{-- <option value="M">--- ชาย ---</option>
+                                    <option value="F">--- หญิง ---</option> --}}
 
                                     @if( $booking->customer_gender == "M")
                                         <option value = "{{$booking->customer_gender}}" style="color: blue;">
@@ -71,28 +65,28 @@
                                     <option value="M">---- เพศชาย ----</option>
                                     <option value="F">---- เพศหญิง ----</option>
                                 </select>
-                            </div> --}}
+                            </div>
                         </div>
 
                         <div class="form-group col-xs-12 col-sm-12 col-md-12 my-3">
                             <label class="col-sm-2">ชื่อ : &nbsp;<strong style="color: red">*</strong></label>
-                            <input type="text" class="form-control col-sm-4" name="customer_firstname" id="customer_firstname" style="color: blue; font-size: 20px" value="{{ $booking->customer_firstname }}" readonly>
+                            <input type="text" class="form-control col-sm-4" name="customer_firstname" id="customer_firstname" style="color: blue; font-size: 20px" value="{{ $booking->customer_firstname }}">
 
                             <label class="col-sm-2">นามสกุล : &nbsp;<strong style="color: red">*</strong></label>
-                            <input type="text" class="form-control col-sm-4" name="customer_lastname" id="customer_lastname" style="color: blue; font-size: 20px" value="{{ $booking->customer_lastname }}" readonly>
+                            <input type="text" class="form-control col-sm-4" name="customer_lastname" id="customer_lastname" style="color: blue; font-size: 20px" value="{{ $booking->customer_lastname }}">
                         </div>
 
                         <div class="form-group col-xs-12 col-sm-12 col-md-12 my-3">
                             <label class="col-sm-2">เบอร์โทรศัพท์ : &nbsp;<strong style="color: red">*</strong></label>
-                            <input type="text" class="form-control col-sm-4" name="customer_phone" id="customer_phone" style="color: blue; font-size: 20px" value="{{ $booking->customer_phone }}" readonly>
+                            <input type="text" class="form-control col-sm-4" name="customer_phone" id="customer_phone" style="color: blue; font-size: 20px" value="{{ $booking->customer_phone }}">
 
                             <label class="col-sm-2">อีเมล : &nbsp;<strong style="color: red">*</strong></label>
-                            <input type="text" class="form-control col-sm-4" name="customer_email" id="customer_email" style="color: blue; font-size: 20px" value="{{ $booking->customer_email }}" readonly>
+                            <input type="text" class="form-control col-sm-4" name="customer_email" id="customer_email" style="color: blue; font-size: 20px" value="{{ $booking->customer_email }}">
                         </div>
 
                         <div class="form-group col-xs-12 col-sm-12 col-md-12 my-3">
                             <label class="col-sm-2">ที่อยู่ : &nbsp;<strong style="color: red">*</strong></label>
-                            <input type="text" class="form-control col-sm-10" name="customer_address" id="customer_address" style="color: blue; font-size: 20px" value="{{ $booking->customer_address }}" readonly>
+                            <input type="text" class="form-control col-sm-10" name="customer_address" id="customer_address" style="color: blue; font-size: 20px" value="{{ $booking->customer_address }}">
                         </div>
                         <div class="form-group col-xs-12 col-sm-12 col-md-12 my-3">
                         </div>
@@ -101,6 +95,7 @@
                             <label class="col-sm-2" style="float:right">ห้อง : &nbsp;<strong style="color: red">*</strong></label>
                             <input type="text" class="form-control col-sm-3" name="room_id" id="room_id" style="color: blue; font-size: 20px" value="{{ $booking->room_id }}">
                             {{-- <label class="col-sm-1"></label> --}}
+
 
                             <label class="col-sm-3" style="float:right">สถานะการอยู่อาศัย : &nbsp;<strong style="color: red">*</strong></label>
                             <div class = "col-sm-3">
@@ -170,6 +165,7 @@
                                 <option value="P">---- จ่ายเงินค่ามันจำแล้ว ----</option>
                                 </select>
                             </div>
+
                         </div>
 
                         <div class="form-group col-xs-12 col-sm-12 col-md-12 my-2">
@@ -197,4 +193,3 @@
 </script>
 
 @endsection
-

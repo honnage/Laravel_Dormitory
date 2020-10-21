@@ -2,6 +2,8 @@
 @extends('layouts.app')
 
 @section('content')
+@foreach($customers as $customer)
+@endforeach
 <style type="text/css">
         /* #header {height:150px; background-color:#690;}
         #menu {height:500px;width:300px; float:left; background-color:#610;}
@@ -30,17 +32,315 @@
         <div class="row justify-content-center">
             <div class="col-md-12">
                 {{-- @if( $room->rooms_roomtype == 1 ) --}}
-                    <div style="border: solid 1px rgb(0, 0, 0);
-                                width: 200px; height: 140px;
-                                background-color: rgb(184, 184, 189);
+                    {{-- 101 --}}
+
+                    @if($customer->room_id == 101 &&  $customer->booking_statusResidence == "1")
+                        <div style="border: solid 1px rgb(0, 0, 0);
+                                width: 15%; height: 120px;
+                                background-color: rgb(40, 243, 50);
                                 font-size: 50px;
                                 text-align: center;
                                 justify-content:
                                 center;align-items:
                                 center; text-align: center;
                                 display: inline-block;">
-                        101
+                                101
+                        </div>
+                    @else
+                        <div style="border: solid 1px rgb(0, 0, 0);
+                                width: 15%; height: 120px;
+                                background-color: rgb(248, 248, 250);
+                                font-size: 50px;
+                                text-align: center;
+                                justify-content:
+                                center;align-items:
+                                center; text-align: center;
+                                display: inline-block;">
+                                101
+                        </div>
+                    @endif
+
+                    {{-- 102 --}}
+                    @if($customer->room_id == 102)
+                        <div style="border: solid 1px rgb(0, 0, 0);
+                                 width: 15%; height: 120px;
+                                background-color: rgb(40, 243, 50);
+                                font-size: 50px;
+                                text-align: center;
+                                justify-content:
+                                center;align-items:
+                                center; text-align: center;
+                                display: inline-block;">
+                                102
+                        </div>
+                    @else
+                        <div style="border: solid 1px rgb(0, 0, 0);
+                                 width: 15%; height: 120px;
+                                background-color: rgb(248, 248, 250);
+                                font-size: 50px;
+                                text-align: center;
+                                justify-content:
+                                center;align-items:
+                                center; text-align: center;
+                                display: inline-block;">
+                                102
+                        </div>
+                    @endif
+
+                    {{-- 103 --}}
+                    @if($customer->room_id == 103)
+                        <div style="border: solid 1px rgb(0, 0, 0);
+                                 width: 15%; height: 120px;
+                                background-color: rgb(40, 243, 50);
+                                font-size: 50px;
+                                text-align: center;
+                                justify-content:
+                                center;align-items:
+                                center; text-align: center;
+                                display: inline-block;">
+                                103
+                        </div>
+                    @else
+                        <div style="border: solid 1px rgb(0, 0, 0);
+                                 width: 15%; height: 120px;
+                                background-color: rgb(248, 248, 250);
+                                font-size: 50px;
+                                text-align: center;
+                                justify-content:
+                                center;align-items:
+                                center; text-align: center;
+                                display: inline-block;">
+                                103
+                        </div>
+                    @endif
+
+
+                    @if($customer->room_id == 104)
+                        <div style="border: solid 1px rgb(0, 0, 0);
+                                 width: 15%; height: 120px;
+                                background-color: rgb(40, 243, 50);
+                                font-size: 50px;
+                                text-align: center;
+                                justify-content:
+                                center;align-items:
+                                center; text-align: center;
+                                display: inline-block;">
+                                104
+                        </div>
+                    @else
+                        <div style="border: solid 1px rgb(0, 0, 0);
+                                 width: 15%; height: 120px;
+                                background-color: rgb(248, 248, 250);
+                                font-size: 50px;
+                                text-align: center;
+                                justify-content:
+                                center;align-items:
+                                center; text-align: center;
+                                display: inline-block;">
+                                104
+                        </div>
+                    @endif
+
+                    {{-- 105 --}}
+                    @if($customer->room_id == 105)
+                        <div style="border: solid 1px rgb(0, 0, 0);
+                                 width: 15%; height: 120px;
+                                background-color: rgb(40, 243, 50);
+                                font-size: 50px;
+                                text-align: center;
+                                justify-content:
+                                center;align-items:
+                                center; text-align: center;
+                                display: inline-block;">
+                                105
+                        </div>
+                    @else
+                        <div style="border: solid 1px rgb(0, 0, 0);
+                                 width: 15%; height: 120px;
+                                background-color: rgb(248, 248, 250);
+                                font-size: 50px;
+                                text-align: center;
+                                justify-content:
+                                center;align-items:
+                                center; text-align: center;
+                                display: inline-block;">
+                                105
+                        </div>
+                    @endif
+
+                    {{-- 106 --}}
+                    @if($customer->room_id == 106)
+                        <div style="border: solid 1px rgb(0, 0, 0);
+                                 width: 15%; height: 120px;
+                                background-color: rgb(40, 243, 50);
+                                font-size: 50px;
+                                text-align: center;
+                                justify-content:
+                                center;align-items:
+                                center; text-align: center;
+                                display: inline-block;">
+                                106
+                        </div>
+                    @else
+                        <div style="border: solid 1px rgb(0, 0, 0);
+                                 width: 15%; height: 120px;
+                                background-color: rgb(248, 248, 250);
+                                font-size: 50px;
+                                text-align: center;
+                                justify-content:
+                                center;align-items:
+                                center; text-align: center;
+                                display: inline-block;">
+                                106
+                        </div>
+                    @endif
+                    <br><br> <br><br>
+
+                    {{-- 111 --}}
+                    @if($customer->room_id == 111)
+                        <div style="border: solid 1px rgb(0, 0, 0);
+                                 width: 15%; height: 120px;
+                                background-color: rgb(40, 243, 50);
+                                font-size: 50px;
+                                text-align: center;
+                                justify-content:
+                                center;align-items:
+                                center; text-align: center;
+                                display: inline-block;">
+                                111
+                        </div>
+                    @else
+                        <div style="border: solid 1px rgb(0, 0, 0);
+                                 width: 15%; height: 120px;
+                                background-color: rgb(248, 248, 250);
+                                font-size: 50px;
+                                text-align: center;
+                                justify-content:
+                                center;align-items:
+                                center; text-align: center;
+                                display: inline-block;">
+                                111
+                        </div>
+                    @endif
+
+                     {{-- 110 --}}
+                     @if($customer->room_id == 110)
+                        <div style="border: solid 1px rgb(0, 0, 0);
+                                width: 15%; height: 120px;
+                                background-color: rgb(40, 243, 50);
+                                font-size: 50px;
+                                text-align: center;
+                                justify-content:
+                                center;align-items:
+                                center; text-align: center;
+                                display: inline-block;">
+                                110
+                        </div>
+                    @else
+                        <div style="border: solid 1px rgb(0, 0, 0);
+                                width: 15%; height: 120px;
+                                background-color: rgb(248, 248, 250);
+                                font-size: 50px;
+                                text-align: center;
+                                justify-content:
+                                center;align-items:
+                                center; text-align: center;
+                                display: inline-block;">
+                                110
+                        </div>
+                    @endif
+
+                    <div style="border: solid 1px rgb(255, 255, 255);
+                            width: 15%; height: 120px;
+                            background-color: rgb(255, 255, 255);
+                            center; text-align: center;
+                            display: inline-block;">
+                            -
                     </div>
+
+                    {{-- 109 --}}
+                    @if($customer->room_id == 109)
+                    <div style="border: solid 1px rgb(0, 0, 0);
+                            width: 15%; height: 120px;
+                            background-color: rgb(40, 243, 50);
+                            font-size: 50px;
+                            text-align: center;
+                            justify-content:
+                            center;align-items:
+                            center; text-align: center;
+                            display: inline-block;">
+                            109
+                    </div>
+                @else
+                    <div style="border: solid 1px rgb(0, 0, 0);
+                            width: 15%; height: 120px;
+                            background-color: rgb(248, 248, 250);
+                            font-size: 50px;
+                            text-align: center;
+                            justify-content:
+                            center;align-items:
+                            center; text-align: center;
+                            display: inline-block;">
+                            109
+                    </div>
+                @endif
+
+                {{-- 108 --}}
+                @if($customer->room_id == 108)
+                    <div style="border: solid 1px rgb(0, 0, 0);
+                                width: 15%; height: 120px;
+                            background-color: rgb(40, 243, 50);
+                            font-size: 50px;
+                            text-align: center;
+                            justify-content:
+                            center;align-items:
+                            center; text-align: center;
+                            display: inline-block;">
+                            108
+                    </div>
+                @else
+                    <div style="border: solid 1px rgb(0, 0, 0);
+                                width: 15%; height: 120px;
+                            background-color: rgb(248, 248, 250);
+                            font-size: 50px;
+                            text-align: center;
+                            justify-content:
+                            center;align-items:
+                            center; text-align: center;
+                            display: inline-block;">
+                            108
+                    </div>
+                @endif
+
+                {{-- 111 --}}
+                @if($customer->room_id == 107)
+                    <div style="border: solid 1px rgb(0, 0, 0);
+                            width: 15%; height: 120px;
+                            background-color: rgb(40, 243, 50);
+                            font-size: 50px;
+                            text-align: center;
+                            justify-content:
+                            center;align-items:
+                            center; text-align: center;
+                            display: inline-block;">
+                            <a href="/room" style="color: white">107</a>
+
+                    </div>
+                @else
+                    <div style="border: solid 1px rgb(0, 0, 0);
+                            width: 15%; height: 120px;
+                            background-color: rgb(248, 248, 250);
+                            font-size: 50px;
+                            text-align: center;
+                            justify-content:
+                            center;align-items:
+                            center; text-align: center;
+                            display: inline-block;">
+                            107
+                    </div>
+                @endif
+
+
 
             </div>
             <div id="container">
