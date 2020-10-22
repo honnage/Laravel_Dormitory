@@ -1,3 +1,16 @@
+.unbox{
+    margin:5px ;
+    /* border: solid 1px rgb(0, 0, 0); */
+    width: 15%; height: 120px;
+    font-size: 50px;
+    text-align: center;
+    justify-content:center;
+    align-items:center;
+    text-align: center;
+    display: inline-flex ;
+    justify-content: center;
+}
+
 .box{
     margin:5px ;
     border: solid 1px rgb(0, 0, 0);
@@ -13,6 +26,7 @@
 }
 
 .box-enable {
+    color: white;
     background-color: rgb(40, 243, 50);
 }
 .box-disable {

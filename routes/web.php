@@ -3,6 +3,8 @@
 use Illuminate\Support\Facades\Route;
 //use App\Http\Controllers\DormitoryController;//เรียกแบบกำหนดfunction แบบที่ 1
 use App\Http\Controllers\BookingController;
+use App\Http\Controllers\RoomController;
+use App\Http\Controllers\FloorController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -36,6 +38,7 @@ Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('ho
 Route::resource('/room', 'App\Http\Controllers\RoomController');
 Route::resource('/customer', 'App\Http\Controllers\CustomerController');
 Route::resource('/booking', 'App\Http\Controllers\BookingController');
-Route::get('/booking/overview', 'App\Http\Controllers\BookingController@overview');
+
+Route::get('/floor1', [FloorController::class,'floor1']);
 
 Route::get('/test1', 'App\Http\Controllers\JSController@index');

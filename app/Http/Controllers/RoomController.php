@@ -14,6 +14,7 @@ class RoomController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
     public function index()
     {
         $rooms =  DB::table("rooms")->orderBy('rooms_code')->get();
