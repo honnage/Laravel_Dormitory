@@ -34,7 +34,21 @@ class DormitoryController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'dormitory_unitsWater' => 'required',
+            'dormitory_serviceWater' => 'required',
+            'dormitory_unitselEctricity' => 'required',
+            'dormitory_serviceElectricity' => 'required',
+        ]);
+
+        $dormitory = new RoomModel();
+        $dormitory->dormitory_unitsWater = $request->dormitory_unitsWater;
+        $dormitory->dormitory_serviceWater = $request->dormitory_serviceWater;
+        $dormitory->dormitory_unitselEctricity = $request->dormitory_unitselEctricity;
+        $dormitory->dormitory_serviceElectricity = $request->dormitory_serviceElectricity;
+
+        $dormitory->save();
+        return redirect('dormitory');
     }
 
     /**
@@ -68,7 +82,24 @@ class DormitoryController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $request->validate([
+            'dormitory_unitsWater' => 'required',
+            'dormitory_serviceWater' => 'required',
+            'dormitory_unitselEctricity' => 'required',
+            'dormitory_serviceElectricity' => 'required',
+        ]);
+
+        DB::table('dormitory')
+            ->where('id','=',$id)
+            ->update([
+            'dormitory_unitsWater' => $request->dormitory_unitsWater,
+            'dormitory_serviceWater' => $request->dormitory_serviceWater,
+            'dormitory_unitselEctricity' => $request->dormitory_unitselEctricity,
+            'dormitory_serviceElectricity' => $request->dormitory_serviceElectricity,
+
+        ]);
+        // Session()->flash("success","อัพเดทข้อมูลเรียบร้อยแล้ว!");
+        return redirect('dormitory');
     }
 
     /**

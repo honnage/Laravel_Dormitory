@@ -15,9 +15,11 @@ class CreateTableDormitory extends Migration
     {
         Schema::create('dormitory', function (Blueprint $table) {
             $table->id();
-            $table->string('dormitory_name');
+            // $table->string('dormitory_name');
             $table->integer('dormitory_unitsWater');
+            $table->integer('dormitory_serviceWater');
             $table->integer('dormitory_unitselEctricity');
+            $table->integer('dormitory_serviceElectricity');
             $table->timestamps();
         });
     }
