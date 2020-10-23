@@ -6,9 +6,6 @@
   <br>
     <div id="p1" class="form-group col-xs-12 col-sm-12 col-md-12 ">
     <h1>ข้อมูลหอพัก
-        {{-- <div class="form-group col-xs-12 col-sm-12 col-md-12 my-3" style="position:absolute ; right:0"> --}}
-        <button href="#" class="col-sm-2 slideDown_table btn btn-success fas fa-eye" style="float:right"> เปิดฟอร์ม</button>
-        <button href="#" class="col-sm-2 slideUp_table btn btn-secondary fas fa-eye-slash" style="float:right"> ปิดฟอร์ม</button>
     </h1>
     </div>
 
@@ -63,7 +60,7 @@
                     </center>
                 </form>
                 </div>
-                <a href="/room" class="col-sm-2 my-3 btn btn-primary"> ย้อนกลับ</a>
+                <a href="/dormitory" class="col-sm-2 my-3 btn btn-primary"> ย้อนกลับ</a>
             </div>
         </div>
     </div>

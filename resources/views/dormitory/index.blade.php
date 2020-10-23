@@ -27,10 +27,7 @@
 <div class="container">
   <br>
     <div id="p1" class="form-group col-xs-12 col-sm-12 col-md-12 ">
-    <h1>ข้อมูลการทำสัญญา
-        {{-- <div class="form-group col-xs-12 col-sm-12 col-md-12 my-3" style="position:absolute ; right:0"> --}}
-        <a href="{{ route('dormitory.create') }}" class="col-sm-2 btn btn-outline-primary" style="float:right"> ทำสัญญา</a>
-        <a href="{{ route('dormitory.index') }}" class="col-sm-2 btn btn-outline-info" style="float:right"> ประวัติ</a>
+    <h1>ข้อมูลหน่วยน้ำ - ไฟฟ้า
     </h1>
     </div>
 
@@ -39,12 +36,12 @@
     <div class="container my-4">
         <div class="row justify-content-center">
             <div class="col-md-12">
-            <div class="card-header" ><strong> ข้อมูลห้องพักทั้งหมด </strong></div>
+            <div class="card-header" ><strong> ข้อมูลอัตราบริการทั้งหมด </strong></div>
             <div class="card">
                 <table class="table table-striped">
                     <thead>
                     <tr style="background-color: rgb(35, 158, 117); color: white">
-                        <th scope="col"><center>ID</center></th>
+                        {{-- <th scope="col"><center>ID</center></th> --}}
                         <th scope="col"><center>หน่วยค่าน้ำ</center></th>
                         <th scope="col"><center>หน่วยค่าบริการน้ำ</center></th>
                         <th scope="col"><center>หน่วยไฟฟ้า</center></th>
@@ -55,7 +52,7 @@
                     <tbody>
                         @foreach($dormitorys as $dormitory)
                         <tr>
-                            <th>{{$dormitory->id}}</th>
+                            {{-- <th>{{$dormitory->id}}</th> --}}
                             <td><center>{{$dormitory->dormitory_unitsWater}}</center></td>
                             <td><center>{{$dormitory->dormitory_serviceWater}}</center></td>
                             <td><center>{{$dormitory->dormitory_unitselEctricity}}</center></td>

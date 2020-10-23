@@ -73,7 +73,8 @@ class DormitoryController extends Controller
      */
     public function edit($id)
     {
-        //
+        $dormitorys = DB::table("dormitory")->where('id','=',$id)->get();
+        return view('dormitory.edit',compact('dormitorys'));
     }
 
     /**

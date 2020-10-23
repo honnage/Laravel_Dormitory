@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Route;
 //use App\Http\Controllers\DormitoryController;//เรียกแบบกำหนดfunction แบบที่ 1
 use App\Http\Controllers\BookingController;
 use App\Http\Controllers\RoomController;
-use App\Http\Controllers\FloorController;
+use App\Http\Controllers\AllController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -40,7 +40,10 @@ Route::resource('/customer', 'App\Http\Controllers\CustomerController');
 Route::resource('/booking', 'App\Http\Controllers\BookingController');
 Route::resource('/dormitory', 'App\Http\Controllers\DormitoryController');
 
-Route::get('/floor/{id}', [FloorController::class,'floor']);
+Route::get('/floor/{id}', [AllController::class,'floor']);
+Route::post('/biil/customer/{id}',[AllController::class,'bill']);
+
+
 // Route::get('/floor/room/{id}', [FloorController::class,'room']);
 
 

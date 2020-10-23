@@ -74,18 +74,8 @@ class RoomController extends Controller
     {
         $customers = DB::table("customers")
         ->join('rooms','rooms.rooms_code','=','customers.room_id')
-        // ->where('room_id','=',$id)->get();
-        // $rooms = DB::table('rooms')
-
-
-        // $type = LoanTypeModel::orderBy('id')->get();
-        // $SendDocument = DB::table('SendDocuments')
-
-        // ->join('Profiles','Profiles.user_id','=','SendDocuments.profile_id')
-        // ->join('LoanType','LoanType.id','=','SendDocuments.type_id')
-        // ->join('Accounts','Accounts.SendDocuments_id','=','SendDocuments.SendDocuments_id')
-        // ->select('*','SendDocuments.id as SendID','SendDocuments.created_at as SendDocumentsAt')
-        // // ->where('Activity.id' ,'=',$id)
+        ->select('*','customers.id as id','rooms.id as roomid')
+        // ->where('Activity.id' ,'=',$id)
         // // ->groupBy('SendDocuments.id')
 
         // ->orderBy('SendDocuments.id', 'DESC')
