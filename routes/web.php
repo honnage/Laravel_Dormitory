@@ -40,5 +40,7 @@ Route::resource('/customer', 'App\Http\Controllers\CustomerController');
 Route::resource('/booking', 'App\Http\Controllers\BookingController');
 
 Route::get('/floor1', [FloorController::class,'floor1']);
+Route::get('/floor/room/{id}', [FloorController::class,'room']);
+
 
 Route::get('/test1', 'App\Http\Controllers\JSController@index');

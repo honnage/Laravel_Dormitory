@@ -2,8 +2,8 @@
 @extends('layouts.app')
 
 @section('content')
-@foreach($customers as $customer)
-@endforeach
+
+
 
 <style type="text/css">
 </style>
@@ -24,127 +24,85 @@
     <div class="container">
 
         <div class="row justify-content-center">
-            <div class="col-md-12">
-                @if($customer->room_id == 101 &&  $customer->booking_statusResidence == "1")
-                    <a href="/room" class="box box-enable">
-                        101
-                    </a>
-                @else
-                    <a href="/room" class="box box-enable">
-                        101
-                    </a>
-                @endif
+            <div class="col-md-12 my-2">
 
-                @if($customer->room_id == 102 &&  $customer->booking_statusResidence == "1")
+                {{-- loop แถวบนห้อง 101 - 106 --}}
+                @for($i = 0 ; $i < 6 ; $i++)
+                    <?php
+                        $room = $rooms[$i];
+                        $checkVisit = false;
+                    ?>
+                    @foreach($customers as $customer)
+                    <?php
+                        if($customer->room_id == $room->rooms_code  &&  $customer->booking_statusResidence == "1"){
+                            $checkVisit = true ;
+                            break;
+                        }
+                    ?>
+                    @endforeach
+                    {{-- {{ $checkVisit ? "อยู่" : "ไม่อยู่" }} --}}
+
+                    @if($i == 9)
+                        <div class="box box-disable">&nbsp;</div>
+                    @endif
+
+                    {{-- @if($customer->room_id == $room->rooms_code  &&  $customer->booking_statusResidence == "1") --}}
+
+                    @if($checkVisit)
+                        <div class="box box-enable">
+                            <a href="{{ route('room.show',$customer->id) }}">
+                                {{$room->rooms_code}}
+                            </a>
+                        </div>
+                    @else
+                        <div class="box box-disable">
+                            {{$room->rooms_code}}
+                        </div>
+                    @endif
+                @endfor
+                <br><br><br><br>
+
+
+                {{-- loop แถวล่างห้อง 107 - 111  --}}
+                @for($i = 10 ; $i >= 6 ; $i--)
+                    <?php
+                        $room = $rooms[$i];
+                        $checkVisit = false;
+                    ?>
+                    @foreach($customers as $customer)
+                    <?php
+                        if($customer->room_id == $room->rooms_code  &&  $customer->booking_statusResidence == "1"){
+                            $checkVisit = true ;
+                            break;
+                        }
+                    ?>
+                    @endforeach
+                    {{-- {{ $checkVisit ? "อยู่" : "ไม่อยู่" }} --}}
+
+                    {{-- @if($customer->room_id == $room->rooms_code  &&  $customer->booking_statusResidence == "1") --}}
+
+                    @if($checkVisit)
                     <div class="box box-enable">
-                        102
+                        <a href="{{ route('room.show',$customer->id) }}">
+                            {{$room->rooms_code}}
+                        </a>
                     </div>
-                @else
-                    <div class="box box-disable">
-                        102
-                    </div>
-                @endif
+                    @else
+                        <div class="box box-disable">
+                            {{$room->rooms_code}}
+                        </div>
+                    @endif
+                    @if($i == 9)
+                        <div class="box box-disable">&nbsp;</div>
+                    @endif
+                @endfor
 
-                @if($customer->room_id == 103 &&  $customer->booking_statusResidence == "1")
-                    <div class="box box-enable">
-                        103
-                    </div>
-                @else
-                    <div class="box box-disable">
-                        103
-                    </div>
-                @endif
+                <br><br><br><br><br><br>
 
-                @if($customer->room_id == 104 &&  $customer->booking_statusResidence == "1")
-                    <div class="box box-enable">
-                        104
-                    </div>
-                @else
-                    <div class="box box-disable">
-                        104
-                    </div>
-                @endif
-
-                @if($customer->room_id == 105 &&  $customer->booking_statusResidence == "1")
-                    <div class="box box-enable">
-                        105
-                    </div>
-                @else
-                    <div class="box box-disable">
-                        105
-                    </div>
-                @endif
-
-                @if($customer->room_id == 106 &&  $customer->booking_statusResidence == "1")
-                    <div class="box box-enable">
-                        106
-                    </div>
-                @else
-                    <div class="box box-disable">
-                        106
-                    </div>
-                @endif
-
-                <br><br> <br><br>
-
-                @if($customer->room_id == 111 &&  $customer->booking_statusResidence == "1")
-                    <div class="box box-enable">
-                        111
-                    </div>
-                @else
-                    <div class="box box-disable">
-                        111
-                    </div>
-                @endif
-
-                @if($customer->room_id == 110 &&  $customer->booking_statusResidence == "1")
-                    <div class="box box-enable">
-                        110
-                    </div>
-                @else
-                    <div class="box box-disable">
-                        110
-                    </div>
-                @endif
-
-                <div class="unbox">
-                     &nbsp;
-                </div>
-
-                @if($customer->room_id == 109 &&  $customer->booking_statusResidence == "1")
-                    <div class="box box-enable">
-                        109
-                    </div>
-                @else
-                    <div class="box box-disable">
-                        109
-                    </div>
-                @endif
-
-
-                @if($customer->room_id == 108 &&  $customer->booking_statusResidence == "1")
-                    <div class="box box-enable">
-                        108
-                    </div>
-                @else
-                    <div class="box box-disable">
-                        108
-                    </div>
-                @endif
-
-
-                @if($customer->room_id == 107 &&  $customer->booking_statusResidence == "1")
-                    <div class="box box-enable">
-                        107
-                    </div>
-                @else
-                    <div class="box box-disable">
-                        107
-                    </div>
-                @endif
 
             </div>
         </div>
+
     </div>
 </div>
 

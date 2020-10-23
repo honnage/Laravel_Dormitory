@@ -10,11 +10,22 @@ class FloorController extends Controller
 {
     public function floor1()
     {
-        $rooms =  DB::table("rooms")->orderBy('rooms_code')->get();
+        $customers = DB::table("customers")->where('booking_statusResidence','=',1)->get();
+        $rooms =  DB::table("rooms")->where("rooms_floor",1)->orderBy('rooms_code')->get();
 
-        // $rooms =  DB::table("rooms")->where("rooms_floor",1)->orderBy('rooms_code')->get();
+        // $rooms =  DB::table("rooms")->orderBy('rooms_code')->get();
 
-        $customers = CustomerModel::all();
-        return view('floor.floor1',compact('rooms','customers'));
+
+        // $customers = CustomerModel::all();
+        return view('floor.floor1',compact('customers','rooms'));
+    }
+
+    public function room($id)
+    {
+        $customers = DB::table("customers")->where('room_id','=',$id)->get();
+        $rooms =  DB::table("rooms")->where("rooms_floor",1)->orderBy('rooms_code')->get();
+
+        // $customers = CustomerModel::all();
+        return view('floor.room',compact('customers','rooms'));
     }
 }

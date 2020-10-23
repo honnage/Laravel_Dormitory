@@ -22,7 +22,8 @@ class RoomController extends Controller
         // $rooms =  DB::table("rooms")->where("rooms_floor",1)->orderBy('rooms_code')->get();
 
         $customers = CustomerModel::all();
-        return view('room.index',compact('rooms','customers'));
+        $arrayData  = $customers[0];
+        return view('room.index',compact('rooms','customers','arrayData'));
     }
 
     /**

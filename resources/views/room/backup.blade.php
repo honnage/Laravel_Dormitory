@@ -105,3 +105,31 @@
 
 @endsection
 
+
+@for($i = 10 ; $i >= 6 ; $i--)
+<?php
+    $room = $rooms[$i];
+    $checkVisit = false;
+?>
+@foreach($customers as $customer)
+<?php
+        if($customer->room_id == $room->rooms_code  &&  $customer->booking_statusResidence == "1"){
+            $checkVisit = true ;
+            break;
+        }
+?>
+@endforeach
+{{ $checkVisit ? "อยู่" : "ไม่อยู่" }}
+@if($checkVisit)
+<div class="box box-enable">
+        {{$room->rooms_code}}
+</div>
+@else
+    <div class="box box-disable">
+        {{$room->rooms_code}}
+    </div>
+@endif
+@if($i == 9)
+    <div class="box box-disable">&nbsp;</div>
+@endif
+@endfor
