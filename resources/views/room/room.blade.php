@@ -120,15 +120,32 @@
                             <input type="text" class="form-control col-sm-3" name="room_id" id="room_id" style="color: blue; font-size: 20px" value="{{  $Month }}">
 
                             <label class="col-sm-3">ค่าห้อง : &nbsp;<strong style="color: red">*</strong></label>
-                            <input type="text" class="form-control col-sm-3" name="customer_email" id="customer_email"  placeholder="โปรดระบุ ค่าห้องพัก">
+                            <input type="text" class="form-control col-sm-3" name="roomcost" id="roomcost"style="color: blue; font-size: 20px" value="{{ $customer->roomcost }}" readonly>
 
                         </div>
 
 
                         <div class="form-group col-xs-12 col-sm-12 col-md-12 my-2">
-                            <label class="col-sm-2">เงินค่ามัดจำ : &nbsp;<strong style="color: red">*</strong></label>
-                            <input type="text" class="form-control col-sm-3" name="booking_deposit" id="booking_deposit"style="color: blue; font-size: 20px" value="{{ $customer->booking_deposit }}">
-                            <label class="col-sm-1"></label>
+                            <label class="col-sm-2">หน่วยน้ำ<br>เดือนก่อน : &nbsp;<strong style="color: red">*</strong></label>
+                            <input type="text" class="form-control col-sm-3" name="rooms_unitsWater" id="rooms_unitsWater"style="color: blue; font-size: 20px" value="{{ $customer->rooms_unitsWater }}" readonly>
+
+                            <label class="col-sm-2">หน่วยน้ำ<br>เดือนนี้ : &nbsp;<strong style="color: red">*</strong></label>
+                            <input type="text" class="form-control col-sm-3" name="rooms_unitsWater" id="rooms_unitsWater" >
+
+                            {{-- <label class="col-sm-2">ส่วนต่าง&nbsp;<strong style="color: red">*</strong></label>
+                            <input type="text" class="form-control col-sm-2" name="rooms_unitsElectricity" id="rooms_unitsElectricity"> --}}
+                        </div>
+
+                         <div class="form-group col-xs-12 col-sm-12 col-md-12 my-2">
+                            <label class="col-sm-2">หน่วยไฟฟ้า<br>เดือนก่อน : &nbsp;<strong style="color: red">*</strong></label>
+                            <input type="text" class="form-control col-sm-3" name="rooms_unitsElectricity" id="rooms_unitsElectricity"style="color: blue; font-size: 20px" value="{{ $customer->rooms_unitsElectricity }}" readonly>
+
+                            <label class="col-sm-2">หน่วยไฟฟ้า<br>เดือนนี้ : &nbsp;<strong style="color: red">*</strong></label>
+                            <input type="text" class="form-control col-sm-3" name="rooms_unitsElectricity" id="rooms_unitsElectricity">
+
+
+                            {{-- <label class="col-sm-2">ส่วนต่าง : &nbsp;<strong style="color: red">*</strong></label>
+                            <input type="text" class="form-control col-sm-2" name="rooms_unitsElectricity" id="rooms_unitsElectricity"> --}}
                         </div>
 
                     </div>

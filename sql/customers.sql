@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 23, 2020 at 07:15 PM
+-- Generation Time: Oct 23, 2020 at 08:29 PM
 -- Server version: 10.4.8-MariaDB
 -- PHP Version: 7.3.11
 
@@ -52,9 +52,10 @@ CREATE TABLE `customers` (
 --
 
 INSERT INTO `customers` (`id`, `customer_IDcard`, `customer_firstname`, `customer_lastname`, `customer_gender`, `customer_phone`, `customer_email`, `customer_address`, `room_id`, `booking_deposit`, `roomcost`, `booking_statusResidence`, `booking_statusPayment`, `booking_timeperiod`, `created_at`, `updated_at`) VALUES
-(1, '1100024800326', 'admin', 'system', 'M', '0910000555', 'admin@gmail.com', '11', '101', 6000, 3900, '1', 'P', '1Y', '2020-10-23 10:10:50', '2020-10-23 10:10:50'),
-(2, '1900024800999', 'test', 'system', 'M', '0954500853', 'test@gmail.com', '11', '109', 6000, 3900, '1', 'P', '6M', '2020-10-22 17:57:13', '2020-10-22 17:57:13'),
-(3, '12222', 'hon', 'nage', 'M', '0910000555', 'honnage.x@gmail.com', '11', '108', 6000, 3900, '1', 'P', '6M', '2020-10-22 18:20:54', '2020-10-22 18:20:54');
+(1, '1100024800326', 'admin', 'system', 'M', '0910000555', 'admin@gmail.com', '11', '101', 6000, 3900, '1', 'P', '6M', '2020-10-23 10:32:59', '2020-10-23 10:32:59'),
+(2, '1900024800999', 'test', 'system', 'M', '0954500853', 'test@gmail.com', '11', '102', 6000, 3900, '1', 'P', '6M', '2020-10-23 10:33:21', '2020-10-23 10:33:21'),
+(3, '1100024800326', 'hon', 'nage', 'M', '0910000555', 'honnage.x@gmail.com', '11', '109', 6000, 3900, '1', 'P', '6M', '2020-10-23 10:33:37', '2020-10-23 10:33:37'),
+(4, '1900024800888', 'มาลี', 'มาแล้ว', 'F', '0910000555', 'admin@gmail.com', '11', '209', 6000, 3900, '1', 'P', '6M', '2020-10-23 10:57:03', '2020-10-23 10:57:03');
 
 --
 -- Indexes for dumped tables
@@ -74,7 +75,7 @@ ALTER TABLE `customers`
 -- AUTO_INCREMENT for table `customers`
 --
 ALTER TABLE `customers`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

@@ -38,6 +38,7 @@ Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('ho
 Route::resource('/room', 'App\Http\Controllers\RoomController');
 Route::resource('/customer', 'App\Http\Controllers\CustomerController');
 Route::resource('/booking', 'App\Http\Controllers\BookingController');
+Route::resource('/dormitory', 'App\Http\Controllers\DormitoryController');
 
 Route::get('/floor/{id}', [FloorController::class,'floor']);
 // Route::get('/floor/room/{id}', [FloorController::class,'room']);
