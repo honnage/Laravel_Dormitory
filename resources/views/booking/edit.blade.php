@@ -172,6 +172,10 @@
                             <label class="col-sm-2">เงินค่ามัดจำ : &nbsp;<strong style="color: red">*</strong></label>
                             <input type="text" class="form-control col-sm-3" name="booking_deposit" id="booking_deposit"style="color: blue; font-size: 20px" value="{{ $booking->booking_deposit }}">
                             <label class="col-sm-1"></label>
+
+                            <label class="col-sm-2">ค่าห้อง : &nbsp;<strong style="color: red">*</strong></label>
+                            <input type="text" class="form-control col-sm-3" name="booking_deposit" id="booking_deposit"style="color: blue; font-size: 20px" value="{{ $booking->roomcost }}">
+                            <label class="col-sm-1"></label>
                         </div>
 
                     </div>

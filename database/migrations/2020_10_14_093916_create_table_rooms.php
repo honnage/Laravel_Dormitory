@@ -17,7 +17,9 @@ class CreateTableRooms extends Migration
             $table->id();
             $table->string('rooms_code');
             $table->string('rooms_floor');
-            $table->char('rooms_roomtype');
+            $table->string('rooms_roomtype');
+            $table->integer('rooms_unitsElectricity');
+            $table->integer('rooms_unitsWater');
             $table->timestamps();
         });
     }

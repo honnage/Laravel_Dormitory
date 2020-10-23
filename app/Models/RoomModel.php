@@ -13,5 +13,7 @@ class RoomModel extends Model
         'rooms_code',
         'rooms_floor',
         'rooms_roomtype',
+        'rooms_unitsElectricity',
+        'rooms_unitsWater',
     ];
 }

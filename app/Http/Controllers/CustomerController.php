@@ -86,6 +86,7 @@ class CustomerController extends Controller
             'booking_timeperiod' => 'required',
             'booking_statusResidence' => 'required',
             'booking_statusPayment' => 'required',
+            'roomcost' => 'required',
         ]);
 
         DB::table('customers')
@@ -103,6 +104,7 @@ class CustomerController extends Controller
             'booking_timeperiod' => $request->booking_timeperiod,
             'booking_statusResidence' => $request->booking_statusResidence,
             'booking_statusPayment' => $request->booking_statusPayment,
+            'roomcost' => $request->roomcost,
 
         ]);
         // Session()->flash("success","อัพเดทข้อมูลเรียบร้อยแล้ว!");

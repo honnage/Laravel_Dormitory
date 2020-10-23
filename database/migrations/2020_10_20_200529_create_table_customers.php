@@ -24,6 +24,7 @@ class CreateTableCustomers extends Migration
             $table->string("customer_address");
             $table->string("room_id");
             $table->integer("booking_deposit");
+            $table->integer("roomcost");
             $table->string("booking_statusResidence");
             $table->string("booking_statusPayment");
             $table->string("booking_timeperiod");

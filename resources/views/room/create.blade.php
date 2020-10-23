@@ -71,6 +71,15 @@
                             </div>
                         </div>
 
+                        <div class="form-group col-xs-12 col-sm-12 col-md-12 my-2">
+                            <label class="col-sm-2">หน่วยน้ำ</label>
+                            <input type="text" class="form-control col-sm-3" name="rooms_unitsWater" id="rooms_unitsWater" placeholder="เช่น: 0000">
+
+                            <label class="col-sm-2">หน่วยไฟ</label>
+                            <input type="text" class="form-control col-sm-4" name="rooms_unitsElectricity" id="rooms_unitsElectricity" placeholder="เช่น: 0000">
+
+                        </div>
+
 
                         <div class="form-group col-xs-12 col-sm-12 col-md-12 my-2">
                             <label class="col-sm-2">ประเภทห้อง</label>

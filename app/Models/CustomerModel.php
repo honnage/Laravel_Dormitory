@@ -22,6 +22,7 @@ class CustomerModel extends Model
         'booking_timeperiod',
         'booking_statusResidence',
         'booking_statusPayment',
+        'roomcost',
 
     ];
 }

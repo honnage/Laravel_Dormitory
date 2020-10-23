@@ -52,6 +52,7 @@ class BookingController extends Controller
             'booking_timeperiod'=>'required',
             'booking_statusResidence' =>'required',
             'booking_statusPayment' =>'required',
+            'roomcost' => 'required',
         ]);
         $customer->customer_IDcard = $request->customer_IDcard;
         $customer->customer_firstname = $request->customer_firstname;
@@ -65,6 +66,7 @@ class BookingController extends Controller
         $customer->booking_timeperiod = $request->booking_timeperiod;
         $customer->booking_statusResidence = $request->booking_statusResidence;
         $customer->booking_statusPayment = $request->booking_statusPayment;
+        $customer->roomcost = $request->roomcost;
         // $customer->profile_id = Auth::user()->id;
         $customer->save();
 
@@ -118,6 +120,7 @@ class BookingController extends Controller
             'booking_timeperiod' => 'required',
             'booking_statusResidence' => 'required',
             'booking_statusPayment' => 'required',
+            'roomcost' => 'required',
         ]);
 
         DB::table('customers')
@@ -135,6 +138,7 @@ class BookingController extends Controller
             'booking_timeperiod' => $request->booking_timeperiod,
             'booking_statusResidence' => $request->booking_statusResidence,
             'booking_statusPayment' => $request->booking_statusPayment,
+            'roomcost' => $request->roomcost,
 
         ]);
         // Session()->flash("success","อัพเดทข้อมูลเรียบร้อยแล้ว!");

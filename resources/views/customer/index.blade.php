@@ -8,8 +8,8 @@
     <div id="p1" class="form-group col-xs-12 col-sm-12 col-md-12 ">
     <h1>ข้อมูลผู้อยู่อาศัย
         {{-- <div class="form-group col-xs-12 col-sm-12 col-md-12 my-3" style="position:absolute ; right:0"> --}}
-        <a href="{{ route('booking.create') }}" class="col-sm-2 btn btn-outline-success" style="float:right"> ทำสัญญา</a>
-        <a href="{{ route('booking.index') }}" class="col-sm-2 btn btn-outline-primary" style="float:right"> ประวัติ</a>
+        <a href="{{ route('booking.create') }}" class="col-sm-2 btn btn-outline-primary" style="float:right"> ทำสัญญา</a>
+        <a href="{{ route('booking.index') }}" class="col-sm-2 btn btn-outline-info" style="float:right"> ประวัติ</a>
     </h1>
     </div>
 

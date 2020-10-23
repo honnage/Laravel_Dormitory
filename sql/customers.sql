@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 23, 2020 at 01:29 PM
+-- Generation Time: Oct 23, 2020 at 07:15 PM
 -- Server version: 10.4.8-MariaDB
 -- PHP Version: 7.3.11
 
@@ -39,6 +39,7 @@ CREATE TABLE `customers` (
   `customer_address` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `room_id` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `booking_deposit` int(11) NOT NULL,
+  `roomcost` int(11) NOT NULL,
   `booking_statusResidence` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `booking_statusPayment` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `booking_timeperiod` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -50,10 +51,10 @@ CREATE TABLE `customers` (
 -- Dumping data for table `customers`
 --
 
-INSERT INTO `customers` (`id`, `customer_IDcard`, `customer_firstname`, `customer_lastname`, `customer_gender`, `customer_phone`, `customer_email`, `customer_address`, `room_id`, `booking_deposit`, `booking_statusResidence`, `booking_statusPayment`, `booking_timeperiod`, `created_at`, `updated_at`) VALUES
-(1, '1100024800326', 'admin', 'system', 'M', '0910000555', 'admin@gmail.com', '11', '111', 6000, '1', 'P', '6M', '2020-10-21 13:57:47', '2020-10-21 13:57:47'),
-(2, '1900024800999', 'test', 'system', 'M', '0954500853', 'test@gmail.com', '11', '109', 6000, '1', 'P', '6M', '2020-10-23 00:57:13', '2020-10-23 00:57:13'),
-(3, '12222', 'hon', 'nage', 'M', '0910000555', 'honnage.x@gmail.com', '11', '108', 6000, '1', 'P', '6M', '2020-10-23 01:20:54', '2020-10-23 01:20:54');
+INSERT INTO `customers` (`id`, `customer_IDcard`, `customer_firstname`, `customer_lastname`, `customer_gender`, `customer_phone`, `customer_email`, `customer_address`, `room_id`, `booking_deposit`, `roomcost`, `booking_statusResidence`, `booking_statusPayment`, `booking_timeperiod`, `created_at`, `updated_at`) VALUES
+(1, '1100024800326', 'admin', 'system', 'M', '0910000555', 'admin@gmail.com', '11', '101', 6000, 3900, '1', 'P', '1Y', '2020-10-23 10:10:50', '2020-10-23 10:10:50'),
+(2, '1900024800999', 'test', 'system', 'M', '0954500853', 'test@gmail.com', '11', '109', 6000, 3900, '1', 'P', '6M', '2020-10-22 17:57:13', '2020-10-22 17:57:13'),
+(3, '12222', 'hon', 'nage', 'M', '0910000555', 'honnage.x@gmail.com', '11', '108', 6000, 3900, '1', 'P', '6M', '2020-10-22 18:20:54', '2020-10-22 18:20:54');
 
 --
 -- Indexes for dumped tables

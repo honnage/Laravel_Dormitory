@@ -49,12 +49,16 @@ class RoomController extends Controller
             'rooms_code' => 'required|unique:rooms',
             'rooms_floor' => 'required',
             'rooms_roomtype' => 'required',
+            'rooms_unitsElectricity' => 'required',
+            'rooms_unitsWater' => 'required',
         ]);
 
         $room = new RoomModel();
         $room->rooms_code = $request->rooms_code;
         $room->rooms_floor = $request->rooms_floor;
         $room->rooms_roomtype = $request->rooms_roomtype;
+        $room->rooms_unitsElectricity = $request->rooms_unitsElectricity;
+        $room->rooms_unitsWater = $request->rooms_unitsWater;
 
         $room->save();
         return redirect('room/create');
@@ -68,7 +72,8 @@ class RoomController extends Controller
      */
     public function show($id)
     {
-        //
+        $customers = DB::table("customers")->where('id','=',$id)->get();
+        return view('room.room',compact('customers'));
     }
 
 

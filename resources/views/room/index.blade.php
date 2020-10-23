@@ -30,9 +30,11 @@
                     <?php
                         $room = $rooms[$i];
                         $checkVisit = false;
+
                     ?>
                     @foreach($customers as $customer)
                     <?php
+
                         if($customer->room_id == $room->rooms_code  &&  $customer->booking_statusResidence == "1"){
                             $checkVisit = true ;
                             break;
@@ -78,7 +80,7 @@
 
                     @if($checkVisit)
                     <div class="box box-enable">
-                        <a href="{{ route('room.show',$customer->id) }}">
+                        <a class="a" href="{{ route('room.show',$customer->id) }}">
                             {{$room->rooms_code}}
                         </a>
                     </div>
@@ -112,15 +114,11 @@
                 @endforeach
                 {{-- {{ $checkVisit ? "อยู่" : "ไม่อยู่" }} --}}
 
-                @if($i == 9)
-                    <div class="box box-disable">&nbsp;</div>
-                @endif
-
                 {{-- @if($customer->room_id == $room->rooms_code  &&  $customer->booking_statusResidence == "1") --}}
 
                 @if($checkVisit)
                     <div class="box box-enable">
-                        <a href="{{ route('room.show',$customer->id) }}">
+                        <a class="a" href="{{ route('room.show',$customer->id) }}">
                             {{$room->rooms_code}}
                         </a>
                     </div>
@@ -154,7 +152,7 @@
 
                 @if($checkVisit)
                 <div class="box box-enable">
-                    <a href="{{ route('room.show',$customer->id) }}">
+                    <a class="a" href="{{ route('room.show',$customer->id) }}">
                         {{$room->rooms_code}}
                     </a>
                 </div>
@@ -187,13 +185,10 @@
                 ?>
                 @endforeach
 
-                @if($i == 9)
-                    <div class="box box-disable">&nbsp;</div>
-                @endif
 
                 @if($checkVisit)
                     <div class="box box-enable">
-                        <a href="{{ route('room.show',$customer->id) }}">
+                        <a class="a" href="{{ route('room.show',$customer->id) }}">
                             {{$room->rooms_code}}
                         </a>
                     </div>
@@ -224,7 +219,7 @@
 
                 @if($checkVisit)
                 <div class="box box-enable">
-                    <a href="{{ route('room.show',$customer->id) }}">
+                    <a class="a" href="{{ route('room.show',$customer->id) }}">
                         {{$room->rooms_code}}
                     </a>
                 </div>
@@ -257,13 +252,11 @@
                 ?>
                 @endforeach
 
-                @if($i == 9)
-                    <div class="box box-disable">&nbsp;</div>
-                @endif
+
 
                 @if($checkVisit)
                     <div class="box box-enable">
-                        <a href="{{ route('room.show',$customer->id) }}">
+                        <a class="a" href="{{ route('room.show',$customer->id) }}">
                             {{$room->rooms_code}}
                         </a>
                     </div>
@@ -296,7 +289,7 @@
 
                 @if($checkVisit)
                 <div class="box box-enable">
-                    <a href="{{ route('room.show',$customer->id) }}">
+                    <a class="a" href="{{ route('room.show',$customer->id) }}">
                         {{$room->rooms_code}}
                     </a>
                 </div>
@@ -329,14 +322,10 @@
                 ?>
                 @endforeach
 
-                @if($i == 9)
-                    <div class="box box-disable">&nbsp;</div>
-                @endif
-
 
                 @if($checkVisit)
                     <div class="box box-enable">
-                        <a href="{{ route('room.show',$customer->id) }}">
+                        <a class="a" href="{{ route('room.show',$customer->id) }}">
                             {{$room->rooms_code}}
                         </a>
                     </div>
@@ -368,7 +357,7 @@
 
                 @if($checkVisit)
                 <div class="box box-enable">
-                    <a href="{{ route('room.show',$customer->id) }}">
+                    <a class="a" href="{{ route('room.show',$customer->id) }}">
                         {{$room->rooms_code}}
                     </a>
                 </div>
@@ -402,13 +391,9 @@
                 @endforeach
 
 
-                @if($i == 9)
-                    <div class="box box-disable">&nbsp;</div>
-                @endif
-
                 @if($checkVisit)
                     <div class="box box-enable">
-                        <a href="{{ route('room.show',$customer->id) }}">
+                        <a class="a" href="{{ route('room.show',$customer->id) }}">
                             {{$room->rooms_code}}
                         </a>
                     </div>
@@ -439,7 +424,7 @@
 
                 @if($checkVisit)
                 <div class="box box-enable">
-                    <a href="{{ route('room.show',$customer->id) }}">
+                    <a class="a" href="{{ route('room.show',$customer->id) }}">
                         {{$room->rooms_code}}
                     </a>
                 </div>
