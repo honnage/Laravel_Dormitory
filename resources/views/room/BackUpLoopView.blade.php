@@ -1,4 +1,3 @@
-
 @extends('layouts.app')
 
 @section('content')
@@ -11,12 +10,12 @@
   <br>
   <div id="p1" class="form-group col-xs-12 col-sm-12 col-md-12 ">
         <h1>เพื่มข้อมูลห้อง</h1>
-        <a href="/floor1" class="btn btn-outline-light" style="background-color: dimgray">ชั้น 1</a>
-        <a href="/floor2" class="btn btn-outline-light" style="background-color: indianred">ชั้น 2</a>
-        <a href="/floor3" class="btn btn-outline-light" style="background-color: coral">ชั้น 3</a>
-        <a href="/floor4" class="btn btn-outline-light" style="background-color: cadetblue">ชั้น 4</a>
-        <a href="/floor5" class="btn btn-outline-light" style="background-color: dodgerblue">ชั้น 5</a>
-        <a href="/floor6" class="btn btn-outline-light" style="background-color: darkorchid">ชั้น 6</a>
+        <a href="/floor/{{1}}" class="btn btn-outline-light" style="background-color: dimgray">ชั้น 1</a>
+        <a href="/floor/{{2}}" class="btn btn-outline-light" style="background-color: indianred">ชั้น 2</a>
+        <a href="/floor/{{3}}" class="btn btn-outline-light" style="background-color: coral">ชั้น 3</a>
+        <a href="/floor/{{4}}" class="btn btn-outline-light" style="background-color: cadetblue">ชั้น 4</a>
+        <a href="/floor/{{5}}" class="btn btn-outline-light" style="background-color: dodgerblue">ชั้น 5</a>
+        <a href="/floor/{{6}}" class="btn btn-outline-light" style="background-color: darkorchid">ชั้น 6</a>
         <a href="/room/create" class="col-sm-2  btn btn-outline-success" style="position:absolute ; right:0 "> ห้องทั้งหมด</a>
 
   </div>

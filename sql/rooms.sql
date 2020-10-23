@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 23, 2020 at 09:53 AM
+-- Generation Time: Oct 23, 2020 at 01:56 PM
 -- Server version: 10.4.8-MariaDB
 -- PHP Version: 7.3.11
 
@@ -63,7 +63,51 @@ INSERT INTO `rooms` (`id`, `rooms_code`, `rooms_floor`, `rooms_roomtype`, `creat
 (19, '208', '2', '2', NULL, NULL),
 (20, '209', '2', '2', NULL, NULL),
 (21, '210', '2', '2', NULL, NULL),
-(22, '211', '2', '2', NULL, NULL);
+(22, '211', '2', '2', NULL, NULL),
+(23, '301', '3', '2', NULL, NULL),
+(24, '302', '3', '2', NULL, NULL),
+(25, '303', '3', '2', NULL, NULL),
+(26, '304', '3', '2', NULL, NULL),
+(27, '305', '3', '2', NULL, NULL),
+(28, '306', '3', '2', NULL, NULL),
+(29, '307', '3', '2', NULL, NULL),
+(30, '308', '3', '2', NULL, NULL),
+(31, '309', '3', '2', NULL, NULL),
+(32, '310', '3', '2', NULL, NULL),
+(33, '311', '3', '2', NULL, NULL),
+(34, '401', '4', '2', NULL, NULL),
+(35, '402', '4', '2', NULL, NULL),
+(36, '403', '4', '2', NULL, NULL),
+(37, '404', '4', '2', NULL, NULL),
+(38, '405', '4', '2', NULL, NULL),
+(39, '406', '4', '2', NULL, NULL),
+(40, '407', '4', '2', NULL, NULL),
+(41, '408', '4', '2', NULL, NULL),
+(42, '409', '4', '2', NULL, NULL),
+(43, '410', '4', '2', NULL, NULL),
+(44, '411', '4', '2', NULL, NULL),
+(45, '501', '5', '2', NULL, NULL),
+(46, '502', '5', '2', NULL, NULL),
+(47, '503', '5', '2', NULL, NULL),
+(48, '504', '5', '2', NULL, NULL),
+(49, '505', '5', '2', NULL, NULL),
+(50, '506', '5', '2', NULL, NULL),
+(51, '507', '5', '2', NULL, NULL),
+(52, '508', '5', '2', NULL, NULL),
+(53, '509', '5', '2', NULL, NULL),
+(54, '510', '5', '2', NULL, NULL),
+(55, '511', '5', '2', NULL, NULL),
+(56, '601', '6', '2', NULL, NULL),
+(57, '602', '6', '2', NULL, NULL),
+(58, '603', '6', '2', NULL, NULL),
+(59, '604', '6', '2', NULL, NULL),
+(60, '605', '6', '2', NULL, NULL),
+(61, '606', '6', '2', NULL, NULL),
+(62, '607', '6', '2', NULL, NULL),
+(63, '608', '6', '2', NULL, NULL),
+(64, '609', '6', '2', NULL, NULL),
+(65, '610', '6', '2', NULL, NULL),
+(66, '611', '6', '2', NULL, NULL);
 
 --
 -- Indexes for dumped tables

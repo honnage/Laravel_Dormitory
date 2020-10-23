@@ -23,10 +23,11 @@
     display: inline-flex ;
     justify-content: center;
 
+
 }
 
 .box-enable {
-    color: white;
+    /* color: white; */
     background-color: rgb(40, 243, 50);
 }
 .box-disable {
@@ -35,5 +36,5 @@
 }
 
 .a{
-    color: aquamarine;
+    color: rgb(255, 255, 255) !important;
 }
