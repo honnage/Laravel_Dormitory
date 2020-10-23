@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use App\Models\DormitoryModel;
 
 class DormitoryController extends Controller
 {
@@ -13,7 +15,8 @@ class DormitoryController extends Controller
      */
     public function index()
     {
-        return view('dormitory.index');
+        $dormitorys = DormitoryModel::all();
+        return view('dormitory.index' ,compact('dormitorys'));
     }
 
     /**
@@ -23,7 +26,7 @@ class DormitoryController extends Controller
      */
     public function create()
     {
-        //
+        return view('dormitory.create');
     }
 
     /**
@@ -41,7 +44,7 @@ class DormitoryController extends Controller
             'dormitory_serviceElectricity' => 'required',
         ]);
 
-        $dormitory = new RoomModel();
+        $dormitory = new DormitoryModel();
         $dormitory->dormitory_unitsWater = $request->dormitory_unitsWater;
         $dormitory->dormitory_serviceWater = $request->dormitory_serviceWater;
         $dormitory->dormitory_unitselEctricity = $request->dormitory_unitselEctricity;
