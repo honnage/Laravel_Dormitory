@@ -18,8 +18,12 @@ class RoomController extends Controller
 
     public function index()
     {
-        $rooms =  DB::table("rooms")->orderBy('rooms_code')->get();
-
+        $rooms =  DB::table("rooms")
+        // ->join('customers','customers.room_id','=','rooms.rooms_code')
+        // ->select('*','rooms.id as id','customers.id as cudID',)
+        // ->where('customers.room_id' ,'=','rooms.rooms_code')
+        ->orderBy('rooms_code')
+        ->get();
         // $rooms =  DB::table("rooms")->where("rooms_floor",1)->orderBy('rooms_code')->get();
 
         $customers = CustomerModel::all();
@@ -73,8 +77,10 @@ class RoomController extends Controller
      */
     public function show($id)
     {
+        $bills = DB::table("bill")->get();
         $customers = DB::table("customers")
         ->join('rooms','rooms.rooms_code','=','customers.room_id')
+        // ->join('bill','bill.room_id','=','customers.room_id')
         ->select('*','customers.id as id','rooms.id as roomid')
         ->where('customers.id' ,'=',$id)
         // // ->groupBy('SendDocuments.id')
@@ -85,7 +91,7 @@ class RoomController extends Controller
 
         ->get();
         $dormitorys = DormitoryModel::all();
-        return view('room.room',compact('dormitorys','customers'));
+        return view('room.room',compact('dormitorys','customers','bills'));
     }
 
 

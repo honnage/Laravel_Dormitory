@@ -59,7 +59,7 @@
                     <center>
                     <button type="reset" class="btn btn-secondary col-sm-2">ยกเลิก</button>
                     {{-- <button type="submit"  value="submit" name="submit" class="btn btn-success col-sm-2">บันทึก</button> --}}
-                    <button type="submit" value="submit"  class="btn btn-success save col-sm-2">อัพเดท</button>\
+                    <button type="submit" value="submit"  class="btn btn-success save col-sm-2">อัพเดท</button>
                     </center>
                 </form>
                 </div>

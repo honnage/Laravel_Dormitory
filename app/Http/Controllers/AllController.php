@@ -45,6 +45,7 @@ class AllController extends Controller
         $dormitorys = DormitoryModel::all();
 
         $request->validate([
+            // 'bill_code' => 'required',
             'room_id' => 'required',
             'titles' => 'required',
             'rooms_unitsWater' => 'required',
@@ -80,18 +81,17 @@ class AllController extends Controller
             'bill_electricity' =>   ($request->bill_unitselEctricity - $request->rooms_unitsElectricity ) * $request->unitServiceElectricity +
                              ($request->bill_unitselEctricity - $request->rooms_unitsElectricity ) * $request->unitelEctricity ,
 
-            'bill_roomcost' =>  $request->room_id,
+            'bill_roomcost' =>  $request->roomcost,
             'bill_date' =>  $date,
             'created_at'=> $date,
-            // 'bill_water' => $request->dormitory_unitsWater,
         ]);
 
         DB::table('rooms')
             // ->join('rooms','rooms.rooms_code','=','customers.room_id')
-            ->where('rooms_code','=',$id)
+            ->where('rooms_code','=',$request->room_id)
             ->update([
-            'rooms_code' => $request->rooms_code,
-
+            'rooms_unitsElectricity' => $request->rooms_unitsElectricity + ($request->bill_unitselEctricity - $request->rooms_unitsElectricity ),
+            'rooms_unitsWater' => $request->rooms_unitsWater +  ($request->bill_unitsWater - $request->rooms_unitsWater ),
         ]);
 
 
