@@ -77,7 +77,7 @@
                                 <a class="nav-link" href="{{ route('booking.create') }}">{{ ('การทำสัญญา') }}</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="#">{{ ('การเงิน') }}</a>
+                                <a class="nav-link" href="/bill">{{ ('การเงิน') }}</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" href="{{ route('customer.index') }}">{{ ('ผู้อยู่อาศัย') }}</a>

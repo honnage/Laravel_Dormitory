@@ -11,29 +11,48 @@ class AllController extends Controller
 {
     public function floor($id)
     {
-        $customers = DB::table("customers")->where('booking_statusResidence','=',1)->get();
+        // $customers = DB::table("customers")->where('booking_statusResidence','=',1)->get();
         $rooms = DB::table("rooms")->where('rooms_floor','=',$id)->get();
 
-        // $rooms =  DB::table("rooms")->orderBy('rooms_code')->get();
 
 
         // $customers = CustomerModel::all();
-        return view('room.floor',compact('customers','rooms'));
-    }
+        // return view('room.floor',compact('customers','rooms'));
 
-    public function bill($id)
-    {
-        // $customers = DB::table("customers")->where('id','=',$id)->get();
+        $bills = DB::table("bill")->where('customer_id','=',$id)->get();
         $customers = DB::table("customers")
         ->join('rooms','rooms.rooms_code','=','customers.room_id')
-        // ->select('*','customers.id as id','rooms.id as roomid')
         ->select('*','customers.id as id','rooms.id as roomid')
-        ->where('customers.id','=',$id)
-        ->get();
-        // $dormitorys = DormitoryModel::all();
+        ->where('booking_statusResidence','=',1)
 
-        // return view('room.room',compact('customers'));
-        return view('bill.create',compact('customers'));
+
+        ->get();
+        $dormitorys = DormitoryModel::all();
+        return view('room.floor',compact('dormitorys','customers','rooms','bills'));
+
+    }
+
+    public function billDashboard()
+    {
+        // // $customers = DB::table("customers")->where('id','=',$id)->get();
+        // $customers = DB::table("customers")
+        // ->join('rooms','rooms.rooms_code','=','customers.room_id')
+        // // ->select('*','customers.id as id','rooms.id as roomid')
+        // ->select('*','customers.id as id','rooms.id as roomid')
+        // ->where('customers.id','=',$id)
+        // ->get();
+        // // $dormitorys = DormitoryModel::all();
+
+        $customers = DB::table("customers")
+        ->join('rooms','rooms.rooms_code','=','customers.room_id')
+        ->join('bill','bill.room_id','=','customers.room_id')
+        ->select('*','customers.id as cusID','rooms.id as roomID'
+        // ,DB::raw('sum(bill.bill_water + bill.bill_electricity + bill.bill_roomcost + bill.bill_fines) as total'),
+        )
+        ->get();
+        // $rooms = DB::table("rooms");
+
+        return view('bill.index',compact('customers'));
     }
 
     public function billStore(Request $request, $id)
@@ -96,7 +115,39 @@ class AllController extends Controller
 
 
         // dd($request->all());
-        return view('bill.create',compact('customers','dormitorys'));
+        return redirect('bill',compact('customers','dormitorys'));
+    }
+
+    public function show($id,$key)
+    {
+        // $bills = DB::table("bill")->get();
+        // $customers = DB::table("customers")
+        // ->join('rooms','rooms.rooms_code','=','customers.room_id')
+        // // ->join('bill','bill.room_id','=','customers.room_id')
+        // ->select('*','customers.id as id','rooms.id as roomid')
+        // ->where('customers.id' ,'=',$id)
+        // // // ->groupBy('SendDocuments.id')
+        // ->get();
+
+        $billrooms = DB::table("bill")
+        ->where('bill.room_id' ,'=',$key)
+        ->get();
+
+        $bills = DB::table("bill")
+        ->join('rooms','rooms.rooms_code','=','bill.room_id')
+        ->join('customers','customers.room_id','=','bill.room_id')
+        ->select('*','customers.id as id','rooms.id as roomid')
+        // ->where('bill.room_id' ,'=',$id)
+        ->get();
+
+        $customers = DB::table("customers")
+        ->join('rooms','rooms.rooms_code','=','customers.room_id')
+        ->select('*','customers.id as id','rooms.id as roomid')
+        ->where('customers.id' ,'=',$id)
+        ->get();
+
+        $dormitorys = DormitoryModel::all();
+        return view('room.room',compact('dormitorys','customers','bills','billrooms'));
     }
 
     public function store(Request $request)

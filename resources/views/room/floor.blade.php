@@ -50,7 +50,7 @@
 
                     @if($checkVisit)
                         <div class="box box-enable">
-                            <a class="a" href="{{ route('room.show',$customer->id) }}">
+                            <a class="a" href="/floor/room/{{$customer->id}}:{{$customer->room_id}}">
                                 {{$room->rooms_code}}
                             </a>
                         </div>
@@ -83,7 +83,7 @@
 
                     @if($checkVisit)
                     <div class="box box-enable">
-                        <a class="a" href="{{ route('room.show',$customer->id) }}">
+                        <a class="a" href="/floor/room/{{$customer->id}}:{{$customer->room_id}}">
                             {{$room->rooms_code}}
                         </a>
                     </div>

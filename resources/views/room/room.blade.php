@@ -5,6 +5,8 @@
 @endforeach
 @foreach($dormitorys as $dormitory)
 @endforeach
+@foreach($billrooms as $billroom)
+@endforeach
 @foreach($bills as $bill)
 @endforeach
 
@@ -18,7 +20,7 @@
     <h1>ออกบิล
         {{-- <div class="form-group col-xs-12 col-sm-12 col-md-12 my-3" style="position:absolute ; right:0"> --}}
             {{-- <a href="{{ route('booking.create') }}" class="col-sm-2 btn btn-outline-success" style="float:right"> ทำสัญญา</a> --}}
-            <a href="{{ route('booking.index') }}" class="col-sm-2 btn btn-outline-primary" style="float:right"> รายการบิลทั้งหมด</a>
+            <a href="/bill" class="col-sm-2 btn btn-outline-primary" style="float:right"> รายการบิลทั้งหมด</a>
 
     </h1>
     </div>
@@ -164,13 +166,17 @@
                             <label class="col-sm-2">หน่วยน้ำ<br>เดือนนี้ : &nbsp;<strong style="color: red">*</strong></label>
 
                             {{-- หัวข้อ เดือน/ปี และ id ห้ามตรงกัน ถ้าตรงกันจะเพื่มข้อมูลไม่ได้ --}}
-                            @if($bill->bill_title == $titles && $bill->customer_id == $customer->id  && $bill->room_id == $customer->room_id)
-                               <input type="text" class="form-control col-sm-3" name="bill_unitsWater" id="bill_unitsWater" placeholder="มีข้อมูลนี้อยู่ในระบบแล้ว" readonly>
+
+                           {{-- มีปัญหาแก้ตรงนี้ --}}
+                           {{-- {{$billroom->room_id }} --}}
+
+                            {{-- @if($bill->bill_title == $titles && $billroom->room_id == $customer->room_id  )
+                                <input type="text" class="form-control col-sm-3" name="bill_unitsWater" id="bill_unitsWater" placeholder="มีข้อมูลนี้อยู่ในระบบแล้ว" readonly >
                             @else
                                <input type="text" class="form-control col-sm-3" name="bill_unitsWater" id="bill_unitsWater" placeholder="หน่วยค่าน้ำเดือนนี้">
-                            @endif
+                            @endif --}}
                                 {{-- <input type="text" class="form-control col-sm-3" name="bill_unitsWater" id="bill_unitsWater" > --}}
-
+                            <input type="text" class="form-control col-sm-3" name="bill_unitsWater" id="bill_unitsWater" placeholder="หน่วยค่าน้ำเดือนนี้">
                         </div>
 
                          <div class="form-group col-xs-12 col-sm-12 col-md-12 my-2">
@@ -180,11 +186,14 @@
                             <label class="col-sm-2">หน่วยไฟฟ้า<br>เดือนนี้ : &nbsp;<strong style="color: red">*</strong></label>
 
                             {{-- หัวข้อ เดือน/ปี และ id ห้ามตรงกัน ถ้าตรงกันจะเพื่มข้อมูลไม่ได้ --}}
-                            @if($bill->bill_title == $titles && $bill->customer_id == $customer->id  && $bill->room_id == $customer->room_id)
+
+                             {{-- มีปัญหาแก้ตรงนี้ --}}
+                            {{-- @if($bill->bill_title == $titles && $billroom->room_id == $customer->room_id  )
                                 <input type="text" class="form-control col-sm-3" name="bill_unitselEctricity" id="bill_unitselEctricity" placeholder="มีข้อมูลนี้อยู่ในระบบแล้ว" readonly>
                             @else
                                 <input type="text" class="form-control col-sm-3" name="bill_unitselEctricity" id="bill_unitselEctricity" placeholder="หน่วยค่าไฟฟ้าเดือนนี้">
-                            @endif
+                            @endif --}}
+                            <input type="text" class="form-control col-sm-3" name="bill_unitselEctricity" id="bill_unitselEctricity" placeholder="หน่วยค่าไฟฟ้าเดือนนี้">
 
 
                             <input type="hidden" id="unitWater" name="unitWater" value="{{ $dormitory->dormitory_unitsWater }}"> {{-- ยนิดน้ำที่กำหนด --}}
@@ -194,24 +203,17 @@
                             <input type="hidden" id="rooms_unitsElectricity" name="rooms_unitsElectricity" value="{{ $customer->rooms_unitsElectricity  }}">    {{-- ยนิดไฟฟ้า เดือนที่แล้ว --}}
                             <input type="hidden" id="rooms_unitsWater" name="rooms_unitsWater" value="{{ $customer->rooms_unitsWater  }}"> {{-- ยนิดน้ำ เดือนที่แล้ว --}}
 
-
                             <input type="hidden" class="form-control col-sm-3" name="titles" id="titles" style="color: blue; font-size: 20px" value="{{  $titles }}">
-
                         </div>
 
                     </div>
                     <center>
+                        {{-- <button type="reset" class="btn btn-secondary col-sm-2">ยกเลิก</button> --}}
+                         {{-- มีปัญหาแก้ตรงนี้ --}}
+                        <button type="submit" value="submit"  class="btn btn-success save col-sm-2 my-4">อัพเดท</button>
                         <button type="reset" class="btn btn-secondary col-sm-2">ยกเลิก</button>
-                        @if($bill->bill_title == $titles && $bill->customer_id == $customer->id  && $bill->room_id == $customer->room_id)
-                            <button type="reset" value="reset"  class="btn btn-info save col-sm-2 my-4">เพิ่มไปแล้ว</button>
-                        @else
-                            <button type="submit" value="submit"  class="btn btn-success save col-sm-2 my-4">อัพเดท</button>
-                        @endif
-
                     </center>
-
                 </form>
-
                 </div>
                 <a href="/room" class="btn btn-primary col-sm-2 my-4">ย้อนกลับ</a>
             </div>
@@ -219,10 +221,5 @@
         </div>
     </div>
 </div>
-<script>
-    $(document).ready(function(){
-        $('#validate_form').parsley();
-    })
-</script>
 
 @endsection

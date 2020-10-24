@@ -77,19 +77,28 @@ class RoomController extends Controller
      */
     public function show($id)
     {
-        $bills = DB::table("bill")->get();
+        // $bills = DB::table("bill")->get();
+        // $customers = DB::table("customers")
+        // ->join('rooms','rooms.rooms_code','=','customers.room_id')
+        // // ->join('bill','bill.room_id','=','customers.room_id')
+        // ->select('*','customers.id as id','rooms.id as roomid')
+        // ->where('customers.id' ,'=',$id)
+        // // // ->groupBy('SendDocuments.id')
+        // ->get();
+
+        $bills = DB::table("bill")
+        ->join('rooms','rooms.rooms_code','=','bill.room_id')
+        ->join('customers','customers.room_id','=','bill.room_id')
+        ->select('*','customers.id as id','rooms.id as roomid')
+        ->where('biil.room_id','=',$key)
+        ->get();
+
         $customers = DB::table("customers")
         ->join('rooms','rooms.rooms_code','=','customers.room_id')
-        // ->join('bill','bill.room_id','=','customers.room_id')
         ->select('*','customers.id as id','rooms.id as roomid')
         ->where('customers.id' ,'=',$id)
-        // // ->groupBy('SendDocuments.id')
-
-        // ->orderBy('SendDocuments.id', 'DESC')
-        // // ->orderBy('SendDocuments.school_year', 'หDESC')
-        // ->where('SendDocuments.id' ,'=',$id)
-
         ->get();
+
         $dormitorys = DormitoryModel::all();
         return view('room.room',compact('dormitorys','customers','bills'));
     }
@@ -122,7 +131,8 @@ class RoomController extends Controller
             'rooms_code' => 'required',
             'rooms_floor' => 'required',
             'rooms_roomtype' => 'required',
-
+            'rooms_unitsElectricity' => 'required',
+            'rooms_unitsWater' => 'required',
         ]);
 
         DB::table('rooms')
@@ -131,6 +141,8 @@ class RoomController extends Controller
             'rooms_code' => $request->rooms_code,
             'rooms_floor' => $request->rooms_floor,
             'rooms_roomtype' => $request->rooms_roomtype,
+            'rooms_unitsElectricity' => $request->rooms_unitsElectricity,
+            'rooms_unitsWater' => $request->rooms_unitsWater,
 
         ]);
         // Session()->flash("success","อัพเดทข้อมูลเรียบร้อยแล้ว!");

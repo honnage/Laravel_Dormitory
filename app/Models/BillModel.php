@@ -14,13 +14,19 @@ class BillModel extends Model
         'customer_id',
         'room_id',
         'bill_title',
+        'bill_roomcost',
         'bill_date',
-        'bill_water',
-        'bill_serviceWater',
+
         'bill_unitsWater',
-        'bill_electricity',
-        'bill_serviceElectricity',
+        'bill_serviceWater',
+        'bill_unitUsedWater',
+        'bill_water',
+
         'bill_unitselEctricity',
+        'bill_serviceElectricity',
+        'bill_unitUsedEctricity',
+        'bill_electricity',
+
         'bill_setdate',
         'bill_paydate',
         'bill_fines',
