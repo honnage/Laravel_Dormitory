@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\RoomModel;
 use App\Models\CustomerModel;
+use App\Models\DormitoryModel;
 use Illuminate\Support\Facades\DB;
 
 class RoomController extends Controller
@@ -75,7 +76,7 @@ class RoomController extends Controller
         $customers = DB::table("customers")
         ->join('rooms','rooms.rooms_code','=','customers.room_id')
         ->select('*','customers.id as id','rooms.id as roomid')
-        // ->where('Activity.id' ,'=',$id)
+        ->where('customers.id' ,'=',$id)
         // // ->groupBy('SendDocuments.id')
 
         // ->orderBy('SendDocuments.id', 'DESC')
@@ -83,7 +84,8 @@ class RoomController extends Controller
         // ->where('SendDocuments.id' ,'=',$id)
 
         ->get();
-        return view('room.room',compact('customers'));
+        $dormitorys = DormitoryModel::all();
+        return view('room.room',compact('dormitorys','customers'));
     }
 
 

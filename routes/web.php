@@ -41,7 +41,7 @@ Route::resource('/booking', 'App\Http\Controllers\BookingController');
 Route::resource('/dormitory', 'App\Http\Controllers\DormitoryController');
 
 Route::get('/floor/{id}', [AllController::class,'floor']);
-Route::post('/biil/customer/{id}',[AllController::class,'bill']);
+Route::post('/biil/customer/{id}',[AllController::class,'billStore']);
 
 
 // Route::get('/floor/room/{id}', [FloorController::class,'room']);

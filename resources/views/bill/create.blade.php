@@ -132,7 +132,7 @@
                             <input type="text" class="form-control col-sm-3" name="rooms_unitsWater" id="rooms_unitsWater"style="color: blue; font-size: 20px" value="{{ $customer->rooms_unitsWater }}" readonly>
 
                             <label class="col-sm-2">หน่วยน้ำ<br>เดือนนี้ : &nbsp;<strong style="color: red">*</strong></label>
-                            <input type="text" class="form-control col-sm-3" name="bill_serviceWater" id="bill_serviceWater" style="color: blue; font-size: 20px" value="{{ $customer->rooms_unitsWater -  $customer->bill_serviceWater}}" readonly>
+                            <input type="text" class="form-control col-sm-3" name="bill_serviceWater" id="bill_serviceWater" style="color: blue; font-size: 20px" value="{{ $customer->rooms_unitsWater}}" readonly>
 
                             {{-- <label class="col-sm-2">ส่วนต่าง&nbsp;<strong style="color: red">*</strong></label>
                             <input type="text" class="form-control col-sm-2" name="rooms_unitsElectricity" id="rooms_unitsElectricity"> --}}

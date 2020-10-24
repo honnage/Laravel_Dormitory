@@ -3,6 +3,9 @@
 @section('content')
 @foreach($customers as $customer)
 @endforeach
+@foreach($dormitorys as $dormitory)
+@endforeach
+
 <script type="text/javascript">
 </script>
 
@@ -36,8 +39,8 @@
                 {{-- <form action="{{ route('customer.update',$customer->id) }}" method="post" id="data"> --}}
                 <form action="/biil/customer/{{$customer->id}}" method="post" id="data">
 
-
                     {{csrf_field()}}
+                    {{-- @method('PUT') --}}
 
 
                     <div class="card-header">
@@ -95,6 +98,9 @@
                         </div>
 
                         <div class="form-group col-xs-12 col-sm-12 col-md-12 my-2">
+                            <label class="col-sm-2">ค่าห้อง : &nbsp;<strong style="color: red">*</strong></label>
+                            <input type="text" class="form-control col-sm-3" name="roomcost" id="roomcost"style="color: blue; font-size: 20px" value="{{ $customer->roomcost }}" readonly>
+
                             <label class="col-sm-2" style="float:right">เดือน : &nbsp;<strong style="color: red">*</strong></label>
                             <?php
                                 echo "<meta charset='utf-8'>";
@@ -112,18 +118,14 @@
                                     $years = date( "Y" )+543; // ค่า ค.ศ.บวก 543 ทำให้เป็น ค.ศ.
 
                                     // return "วัน$ThDay[$week] ที่ $day เดือน $ThMonth[$months] พ.ศ. $years";
-                                    return "$ThMonth[$months] / พ.ศ. $years";
+                                    return "$ThMonth[$months] / พ.ศ.$years";
 
                                 }
-                                $Month = ThDate();
+                                $bill_titles = ThDate();
                                 // echo $Month;
                                 // echo ThDate(); // แสดงวันที่
                             ?>
-                            <input type="text" class="form-control col-sm-3" name="room_id" id="room_id" style="color: blue; font-size: 20px" value="{{  $Month }}">
-
-                            <label class="col-sm-3">ค่าห้อง : &nbsp;<strong style="color: red">*</strong></label>
-                            <input type="text" class="form-control col-sm-3" name="roomcost" id="roomcost"style="color: blue; font-size: 20px" value="{{ $customer->roomcost }}" readonly>
-
+                            <input type="text" class="form-control col-sm-3" name="bill_titles" id="bill_titles" style="color: blue; font-size: 20px" value="{{  $bill_titles }}">
                         </div>
 
 
@@ -132,7 +134,7 @@
                             <input type="text" class="form-control col-sm-3" name="rooms_unitsWater" id="rooms_unitsWater"style="color: blue; font-size: 20px" value="{{ $customer->rooms_unitsWater }}" readonly>
 
                             <label class="col-sm-2">หน่วยน้ำ<br>เดือนนี้ : &nbsp;<strong style="color: red">*</strong></label>
-                            <input type="text" class="form-control col-sm-3" name="bill_serviceWater" id="bill_serviceWater" >
+                            <input type="text" class="form-control col-sm-3" name="bill_unitsWater" id="bill_unitsWater" >
 
                             {{-- <label class="col-sm-2">ส่วนต่าง&nbsp;<strong style="color: red">*</strong></label>
                             <input type="text" class="form-control col-sm-2" name="rooms_unitsElectricity" id="rooms_unitsElectricity"> --}}
@@ -146,8 +148,55 @@
                             <input type="text" class="form-control col-sm-3" name="bill_unitselEctricity" id="bill_unitselEctricity">
 
 
-                            {{-- <label class="col-sm-2">ส่วนต่าง : &nbsp;<strong style="color: red">*</strong></label>
-                            <input type="text" class="form-control col-sm-2" name="rooms_unitsElectricity" id="rooms_unitsElectricity"> --}}
+
+                            <input type="hidden" id="unitWater" name="unitWater" value="{{ $dormitory->dormitory_unitsWater }}">
+                            {{-- ยนิดน้ำที่กำหนด --}}
+                            <input type="hidden" id="unitElEctricity" name="unitelEctricity" value="{{ $dormitory->dormitory_unitselEctricity }}">
+                            {{-- ยนิดไฟฟ้าที่กำหนด --}}
+                            <input type="hidden" id="unitServiceWater" name="unitServiceWater" value="{{ $dormitory->dormitory_serviceWater }}">
+                            {{-- ยนิดบริการน้ำที่กำหนด --}}
+                            <input type="hidden" id="unitServiceElectricity" name="unitServiceElectricity" value="{{ $dormitory->dormitory_serviceElectricity }}">
+                            {{-- ยนิดบริการไฟฟ้าที่กำหนด --}}
+                            <input type="hidden" id="rooms_unitsElectricity" name="rooms_unitsElectricity" value="{{ $customer->rooms_unitsElectricity  }}">
+                            {{-- ยนิดไฟฟ้า เดือนที่แล้ว --}}
+                            <input type="hidden" id="rooms_unitsWater" name="rooms_unitsWater" value="{{ $customer->rooms_unitsWater  }}">
+                            {{-- ยนิดน้ำ เดือนที่แล้ว --}}
+
+                            {{-- <input type="hidden" id="rooms_unitsWater" name="rooms_unitsWater" value="{{ $customer->roomcost }}"> --}}
+
+
+                           {{-- {{ $dormitory->dormitory_unitsWater }}
+                            {{ $dormitory->dormitory_serviceWater }}
+                            {{ $dormitory->dormitory_unitselEctricity }} --}}
+                            {{-- {{ $dormitory->dormitory_serviceElectricity }} --}}
+                            {{-- {{ $customer->rooms_unitsElectricity }}
+                            {{ $customer->rooms_unitsWater }} --}}
+                            <?php
+                            echo "<meta charset='utf-8'>";
+                            function ThDate1()
+                            {
+                                //วันภาษาไทย
+                                $ThDay = array ( "อาทิตย์", "จันทร์", "อังคาร", "พุธ", "พฤหัส", "ศุกร์", "เสาร์" );
+                                //เดือนภาษาไทย
+                                $ThMonth = array ( "มกรามก", "กุมภาพันธ์", "มีนาคม", "เมษายน","พฤษภาคม", "มิถุนายน", "กรกฏาคม", "สิงหาคม","กันยายน", "ตุลาคม", "พฤศจิกายน", "ธันวาคม" );
+
+                                //กำหนดคุณสมบัติ
+                                $week = date( "w" ); // ค่าวันในสัปดาห์ (0-6)
+                                $months = date( "m" )-1; // ค่าเดือน (1-12)
+                                $month = date( "m" ); // ค่าเดือน (1-12)
+                                $day = date( "d" ); // ค่าวันที่(1-31)
+                                $years = date( "Y" )+543; // ค่า ค.ศ.บวก 543 ทำให้เป็น ค.ศ.
+
+                                // return "วัน$ThDay[$week] ที่ $day เดือน $ThMonth[$months] พ.ศ. $years";
+                                return "$month/$years";
+
+                            }
+                            $titles = ThDate1();
+                            // echo $Month;
+                            // echo ThDate(); // แสดงวันที่
+                        ?>
+                        <input type="hidden" class="form-control col-sm-3" name="titles" id="titles" style="color: blue; font-size: 20px" value="{{  $titles }}">
+
                         </div>
 
                     </div>

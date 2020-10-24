@@ -10,8 +10,10 @@ class BillModel extends Model
     // use HasFactory;
     protected $table="customers";
     protected $fillable = [
+        'bill_code',
         'customer_id',
         'room_id',
+        'bill_title',
         'bill_date',
         'bill_water',
         'bill_serviceWater',
