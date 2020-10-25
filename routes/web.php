@@ -30,25 +30,26 @@ use App\Http\Controllers\AllController;
 //     return view('welcome');
 // });
 
+Route::middleware(['auth','StatusIS'])->group(function(){
+    Route::resource('/room', 'App\Http\Controllers\RoomController');
+    Route::resource('/customer', 'App\Http\Controllers\CustomerController');
+    Route::resource('/booking', 'App\Http\Controllers\BookingController');
+    Route::resource('/dormitory', 'App\Http\Controllers\DormitoryController');
+
+    Route::get('/floor/{id}', [AllController::class,'floor']);
+    Route::post('/biil/customer/{id}',[AllController::class,'billStore']);
+    Route::get('/bill', [AllController::class,'billDashboard']);
+    Route::get('/floor/room/{id}:{key}', [AllController::class,'show']);
+    Route::get('/bill/edit/{id}', [AllController::class,'edit']);
+    Route::post('/biil/update/{id}',[AllController::class,'updateBill']);
+    Route::post('/bill/destroy/{id}', [AllController::class,'destroy']);
+    Route::get('/bill/show/{id}', [AllController::class,'billShow']);
+
+});
 
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-Route::resource('/room', 'App\Http\Controllers\RoomController');
-Route::resource('/customer', 'App\Http\Controllers\CustomerController');
-Route::resource('/booking', 'App\Http\Controllers\BookingController');
-Route::resource('/dormitory', 'App\Http\Controllers\DormitoryController');
-
-Route::get('/floor/{id}', [AllController::class,'floor']);
-Route::post('/biil/customer/{id}',[AllController::class,'billStore']);
-Route::get('/bill', [AllController::class,'billDashboard']);
-Route::get('/floor/room/{id}:{key}', [AllController::class,'show']);
-Route::get('/bill/edit/{id}', [AllController::class,'edit']);
-Route::post('/biil/update/{id}',[AllController::class,'updateBill']);
-Route::post('/bill/destroy/{id}', [AllController::class,'destroy']);
-Route::get('/bill/show/{id}', [AllController::class,'billShow']);
-
-
 
 Route::get('/test1', 'App\Http\Controllers\JSController@index');
