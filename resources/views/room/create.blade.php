@@ -140,8 +140,8 @@
                                 {{-- <a class="btn btn-primary" href="{{ route('dormitory.show',$dorm->id) }}" >แสดงข้อมูล</a> --}}
                                 <a class="btn btn-warning col-sm-3" href="{{ route('room.edit',$room->id) }}" >แก้ไขข้อมูล</a>
 
-                                @method('DELETE')
-                                <button value="DELETE"  data-name="{{$room->rooms_code}}" class="btn btn-danger deleteform col-sm-3" type="submit">ลบข้อมูล</button>
+                                {{-- @method('DELETE')
+                                <button value="DELETE"  data-name="{{$room->rooms_code}}" class="btn btn-danger deleteform col-sm-3" type="submit">ลบข้อมูล</button> --}}
 
                             </form>
                             </center>

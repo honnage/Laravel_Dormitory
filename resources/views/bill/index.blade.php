@@ -15,7 +15,7 @@
                 <table class="table table-striped">
                     <thead>
                     <tr style="background-color: rgb(35, 158, 117); color: white">
-                        <th scope="col"><center>#</center></th>
+                        {{-- <th scope="col"><center>#</center></th> --}}
                         <th scope="col"><center>บิล</center></th>
                         <th scope="col"><center>ชื่อ</center></th>
                         <th scope="col"><center>นามสกุล</center></th>
@@ -29,7 +29,7 @@
                     <tbody>
                         @foreach($customers as $customer)
                         <tr>
-                            <th>{{$customer->id}}</th>
+                            {{-- <th>{{$customer->id}}</th> --}}
                             <th>{{$customer->bill_code}}</th>
                             <td>{{$customer->customer_firstname}}</td>
                             <td>{{$customer->customer_lastname}}</td>
@@ -37,23 +37,27 @@
                             <td><center>{{$customer->bill_title}}</center></td>
                             <td><center>{{ number_format($customer->bill_water + $customer->bill_electricity + $customer->bill_roomcost + $customer->bill_fines) }}</center></td>
                             <td><center>
-                                {{-- {{$customer->biil_status}} --}}
-                                @if($customer->biil_status == "")
-                                ค้างชำระ
-                                @else
-                                จ่ายแล้ว
-                                @endif
-                            </center></td>
+                                    {{-- {{$customer->biil_status}} --}}
+                                    @if($customer->biil_status == "2")
+                                        เกินกำหนด
+                                    @elseif($customer->biil_status == "1")
+                                        จ่ายแล้ว
+                                    @else
+                                        ค้างชำระ
+                                    @endif
+                                </center>
+                            </td>
                             <td>
                                 <center>
-                                <form method="post" action="{{ route('dormitory.destroy',$customer->id) }}">
+                                <form method="post" action="/bill/destroy/{{$customer->id}}">
                                     @csrf
 
-                                    <a class="btn btn-warning " href="{{ route('dormitory.edit',$customer->id) }}" >แก้ไขข้อมูล</a>
+                                    <a class="btn btn-warning " href="/bill/edit/{{$customer->cusID}}" >แก้ไขข้อมูล</a>
 
-                                    {{-- @method('DELETE')
-                                    <button value="DELETE"  data-name="{{$room->rooms_code}}" class="btn btn-danger deleteform col-sm-3" type="submit">ลบข้อมูล</button> --}}
 
+{{--
+                                    @method('DELETE')
+                                    <button value="DELETE"  data-name="{{$customer->id}}" class="btn btn-danger deleteform col-sm-3" type="submit">ลบข้อมูล</button> --}}
                                 </form>
                                 </center>
                             </td>

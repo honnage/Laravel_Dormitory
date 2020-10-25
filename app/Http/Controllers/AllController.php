@@ -14,8 +14,6 @@ class AllController extends Controller
         // $customers = DB::table("customers")->where('booking_statusResidence','=',1)->get();
         $rooms = DB::table("rooms")->where('rooms_floor','=',$id)->get();
 
-
-
         // $customers = CustomerModel::all();
         // return view('room.floor',compact('customers','rooms'));
 
@@ -46,7 +44,7 @@ class AllController extends Controller
         $customers = DB::table("customers")
         ->join('rooms','rooms.rooms_code','=','customers.room_id')
         ->join('bill','bill.room_id','=','customers.room_id')
-        ->select('*','customers.id as cusID','rooms.id as roomID'
+        ->select('*','customers.id as cusID','rooms.id as roomID',
         // ,DB::raw('sum(bill.bill_water + bill.bill_electricity + bill.bill_roomcost + bill.bill_fines) as total'),
         )
         ->get();
@@ -103,6 +101,9 @@ class AllController extends Controller
             'bill_roomcost' =>  $request->roomcost,
             'bill_date' =>  $date,
             'created_at'=> $date,
+
+            'bill_waterBefore' =>  $request->bill_waterBefore,
+            'bill_electricityBefore' =>  $request->bill_electricityBefore,
         ]);
 
         DB::table('rooms')
@@ -115,20 +116,11 @@ class AllController extends Controller
 
 
         // dd($request->all());
-        return redirect('bill',compact('customers','dormitorys'));
+        return redirect('bill');
     }
 
     public function show($id,$key)
     {
-        // $bills = DB::table("bill")->get();
-        // $customers = DB::table("customers")
-        // ->join('rooms','rooms.rooms_code','=','customers.room_id')
-        // // ->join('bill','bill.room_id','=','customers.room_id')
-        // ->select('*','customers.id as id','rooms.id as roomid')
-        // ->where('customers.id' ,'=',$id)
-        // // // ->groupBy('SendDocuments.id')
-        // ->get();
-
         $billrooms = DB::table("bill")
         ->where('bill.room_id' ,'=',$key)
         ->get();
@@ -150,35 +142,47 @@ class AllController extends Controller
         return view('room.room',compact('dormitorys','customers','bills','billrooms'));
     }
 
-    public function store(Request $request)
+    public function edit($id)
     {
-        // $request->validate([
-        //     'rooms_code' => 'required|unique:rooms',
-        //     'rooms_floor' => 'required',
-        //     'rooms_roomtype' => 'required',
-        //     'rooms_unitsElectricity' => 'required',
-        //     'rooms_unitsWater' => 'required',
-        // ]);
+        $dormitorys = DormitoryModel::all();
 
-        // $room = new RoomModel();
-        // $room->rooms_code = $request->rooms_code;
-        // $room->rooms_floor = $request->rooms_floor;
-        // $room->rooms_roomtype = $request->rooms_roomtype;
-        // $room->rooms_unitsElectricity = $request->rooms_unitsElectricity;
-        // $room->rooms_unitsWater = $request->rooms_unitsWater;
+        $bills = DB::table("bill")->where('customer_id','=',$id)->get();
+        $customers = DB::table("customers")
+        ->join('rooms','rooms.rooms_code','=','customers.room_id')
+        ->join('bill','bill.room_id','=','customers.room_id')
+        ->select('*','customers.id as id','rooms.id as roomid',)
+        ->where('customers.id' ,'=',$id)
+        ->get();
 
-        // $room->save();
+        return view('bill.edit',compact('customers','dormitorys','bills'));
+    }
 
-        return redirect('room/create');
+    public function updateBill(Request $request, $id )
+    {
+
+        $request->validate([
+            'biil_status' => 'required',
+        ]);
+
+        DB::table('bill')
+            ->where('id','=',$id)
+            ->update([
+            'biil_status' => $request->biil_status,
+
+        ]);
+        // dd($request->all());
+        // Session()->flash("success","อัพเดทข้อมูลเรียบร้อยแล้ว!");
+        return redirect('bill');
+    }
+
+    public function destroy($id )
+    {
+
+        DB::table('bill')->where('id','=',$id)->delete();
+
+        return redirect('bill');
     }
 
 
-    // public function room($id)
-    // {
-    //     $customers = DB::table("customers")->where('room_id','=',$id)->get();
-    //     $rooms =  DB::table("rooms")->where("rooms_floor",1)->orderBy('rooms_code')->get();
 
-    //     // $customers = CustomerModel::all();
-    //     return view('floor.room',compact('customers','rooms'));
-    // }
 }

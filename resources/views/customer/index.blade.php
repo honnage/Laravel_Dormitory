@@ -60,7 +60,7 @@
                                     @csrf
 
                                     <a class="btn btn-warning " href="{{ route('customer.edit',$customer->id) }}" >แก้ไขข้อมูล</a>
-
+                                    <a class="btn btn-primary " href="{{ route('customer.show',$customer->id) }}" >แสดงรายการ</a>
                                     {{-- @method('DELETE')
                                     <button value="DELETE"  data-name="{{$room->rooms_code}}" class="btn btn-danger deleteform col-sm-3" type="submit">ลบข้อมูล</button> --}}
 

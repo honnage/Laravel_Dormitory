@@ -44,7 +44,11 @@ Route::get('/floor/{id}', [AllController::class,'floor']);
 Route::post('/biil/customer/{id}',[AllController::class,'billStore']);
 Route::get('/bill', [AllController::class,'billDashboard']);
 Route::get('/floor/room/{id}:{key}', [AllController::class,'show']);
-// Route::get('/floor/room/{id}', [FloorController::class,'room']);
+Route::get('/bill/edit/{id}', [AllController::class,'edit']);
+Route::post('/biil/update/{id}',[AllController::class,'updateBill']);
+Route::post('/bill/destroy/{id}', [AllController::class,'destroy']);
+Route::get('/bill/show/{id}', [AllController::class,'billShow']);
+
 
 
 Route::get('/test1', 'App\Http\Controllers\JSController@index');

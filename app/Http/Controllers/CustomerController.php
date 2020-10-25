@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\CustomerModel;
+use App\Models\DormitoryModel;
 use Illuminate\Support\Facades\DB;
 
 class CustomerController extends Controller
@@ -49,7 +50,22 @@ class CustomerController extends Controller
      */
     public function show($id)
     {
-        //
+        $customers = DB::table("customers")
+        ->where('id','=',$id)
+        ->get();
+
+        $bills = DB::table("bill")
+        ->join('rooms','rooms.rooms_code','=','bill.room_id')
+        ->where('customer_id','=',$id)
+        ->get();
+
+        $dormitorys = DormitoryModel::all();
+
+        // ->join('rooms','rooms.rooms_code','=','customers.room_id')
+        // ->select('*','customers.id as id','rooms.id as roomid')
+        // ->where('customers.id' ,'=',$id)
+        // ->get();
+        return view('customer.show',compact('customers','bills','dormitorys'));
     }
 
     /**

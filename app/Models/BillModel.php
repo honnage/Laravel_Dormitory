@@ -21,11 +21,13 @@ class BillModel extends Model
         'bill_serviceWater',
         'bill_unitUsedWater',
         'bill_water',
+        'bill_waterBefore',
 
         'bill_unitselEctricity',
         'bill_serviceElectricity',
         'bill_unitUsedEctricity',
         'bill_electricity',
+        'bill_electricityBefore',
 
         'bill_setdate',
         'bill_paydate',

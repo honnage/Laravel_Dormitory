@@ -1,14 +1,16 @@
 @extends('layouts.app')
 
 @section('content')
-@foreach($customers as $customer)
-@endforeach
+
 @foreach($dormitorys as $dormitory)
 @endforeach
-@foreach($billrooms as $billroom)
+
+@foreach($customers as $customer)
 @endforeach
+
 @foreach($bills as $bill)
 @endforeach
+
 
 <script type="text/javascript">
 </script>
@@ -17,7 +19,7 @@
 <div class="container">
   <br>
     <div id="p1" class="form-group col-xs-12 col-sm-12 col-md-12 ">
-    <h1>ออกบิล
+    <h1>ตรวจบิล
         {{-- <div class="form-group col-xs-12 col-sm-12 col-md-12 my-3" style="position:absolute ; right:0"> --}}
             {{-- <a href="{{ route('booking.create') }}" class="col-sm-2 btn btn-outline-success" style="float:right"> ทำสัญญา</a> --}}
             <a href="/bill" class="col-sm-2 btn btn-outline-primary" style="float:right"> รายการบิลทั้งหมด</a>
@@ -67,7 +69,8 @@
                 @endif
                 <div class="card">
                 {{-- <form action="{{ route('customer.update',$customer->id) }}" method="post" id="data"> --}}
-                <form action="/biil/customer/{{$customer->id}}" method="post" id="data">
+
+                <form action="/biil/update/{{$bill->id}}" method="post" id="data">
 
                     {{csrf_field()}}
                     {{-- @method('PUT') --}}
@@ -76,6 +79,7 @@
                     <div class="card-header">
                         ข้อมูลห้องพัก
                     </div>
+
                     {{csrf_field()}}
                     <div class="form-inline">
                         <div class="form-group col-xs-12 col-sm-12 col-md-12 my-3">
@@ -161,46 +165,24 @@
 
                         <div class="form-group col-xs-12 col-sm-12 col-md-12 my-2">
                             <label class="col-sm-2">หน่วยน้ำ<br>ปัจจุบัน : </label>
-                            <input type="text" class="form-control col-sm-3" name="rooms_unitsWater" id="rooms_unitsWater"style="color: blue; font-size: 20px" value="{{ $customer->rooms_unitsWater }}" readonly>
+                            <input type="text" class="form-control col-sm-2" name="rooms_unitsWater" id="rooms_unitsWater"style="color: blue; font-size: 20px" value="{{ $customer->rooms_unitsWater }}" readonly>
 
-                            <label class="col-sm-2">หน่วยน้ำ<br>เดือนนี้ : &nbsp;<strong style="color: red">*</strong></label>
+                            <label class="col-sm-2">หน่วยน้ำ<br>เดือนก่อน : </label>
+                            <input type="text" class="form-control col-sm-2" name="bill_waterBefore" id="bill_waterBefore" style="color: blue; font-size: 20px" value="{{ $customer->bill_waterBefore }}" readonly>
 
-                            {{-- หัวข้อ เดือน/ปี และ id ห้ามตรงกัน ถ้าตรงกันจะเพื่มข้อมูลไม่ได้ --}}
-
-                           {{-- มีปัญหาแก้ตรงนี้ --}}
-                           {{-- {{$billroom->room_id }} --}}
-
-                            {{-- @if($bill->bill_title == $titles && $billroom->room_id == $customer->room_id  )
-                                <input type="text" class="form-control col-sm-3" name="bill_unitsWater" id="bill_unitsWater" placeholder="มีข้อมูลนี้อยู่ในระบบแล้ว" readonly >
-                            @else
-                               <input type="text" class="form-control col-sm-3" name="bill_unitsWater" id="bill_unitsWater" placeholder="หน่วยค่าน้ำเดือนนี้">
-                            @endif --}}
-                                {{-- <input type="text" class="form-control col-sm-3" name="bill_unitsWater" id="bill_unitsWater" > --}}
-                            <input type="text" class="form-control col-sm-3" name="bill_unitsWater" id="bill_unitsWater" placeholder="หน่วยค่าน้ำเดือนนี้">
+                            <label class="col-sm-2">ใช้น้ำไป</label>
+                            <input type="text" class="form-control col-sm-2" name="bill_unitUsedWater" id="bill_unitUsedWater" style="color: blue; font-size: 20px" value="{{ $customer->bill_unitUsedWater }}" readonly>
                         </div>
 
                          <div class="form-group col-xs-12 col-sm-12 col-md-12 my-2">
                             <label class="col-sm-2">หน่วยไฟฟ้า<br>ปัจจุบัน :</label>
-                            <input type="text" class="form-control col-sm-3" name="rooms_unitsElectricity" id="rooms_unitsElectricity"style="color: blue; font-size: 20px" value="{{ $customer->rooms_unitsElectricity }}" readonly>
+                            <input type="text" class="form-control col-sm-2" name="rooms_unitsElectricity" id="rooms_unitsElectricity"style="color: blue; font-size: 20px" value="{{ $customer->rooms_unitsElectricity }}" readonly>
 
-                            <label class="col-sm-2">หน่วยไฟฟ้า<br>เดือนนี้ : &nbsp;<strong style="color: red">*</strong></label>
+                            <label class="col-sm-2">หน่วยไฟฟ้า<br>เดือนก่อน : </label>
+                            <input type="text" class="form-control col-sm-2" name="bill_electricityBefore" id="bill_electricityBefore" style="color: blue; font-size: 20px" value="{{ $customer->bill_electricityBefore }}" readonly>
 
-
-                            {{-- ไฟ{{ $customer->rooms_unitsElectricity }}
-                            น้ำ{{ $customer->rooms_unitsWater }} --}}
-                            <input type="hidden" id="bill_waterBefore" name="bill_waterBefore" value="{{ $customer->rooms_unitsWater  }}"> {{-- ยนิดน้ำ ก่อน --}}
-                            <input type="hidden" id="bill_electricityBefore" name="bill_electricityBefore" value="{{ $customer->rooms_unitsElectricity  }}"> {{-- ยนิดไฟฟ้า ก่อน --}}
-
-
-                            {{-- หัวข้อ เดือน/ปี และ id ห้ามตรงกัน ถ้าตรงกันจะเพื่มข้อมูลไม่ได้ --}}
-
-                             {{-- มีปัญหาแก้ตรงนี้ --}}
-                            {{-- @if($bill->bill_title == $titles && $billroom->room_id == $customer->room_id  )
-                                <input type="text" class="form-control col-sm-3" name="bill_unitselEctricity" id="bill_unitselEctricity" placeholder="มีข้อมูลนี้อยู่ในระบบแล้ว" readonly>
-                            @else
-                                <input type="text" class="form-control col-sm-3" name="bill_unitselEctricity" id="bill_unitselEctricity" placeholder="หน่วยค่าไฟฟ้าเดือนนี้">
-                            @endif --}}
-                            <input type="text" class="form-control col-sm-3" name="bill_unitselEctricity" id="bill_unitselEctricity" placeholder="หน่วยค่าไฟฟ้าเดือนนี้">
+                            <label class="col-sm-2">ใช้ไฟฟ้าไป</label>
+                            <input type="text" class="form-control col-sm-2" name="bill_unitUsedEctricity" id="bill_unitUsedEctricity" style="color: blue; font-size: 20px" value="{{ $customer->bill_unitUsedEctricity }}" readonly>
 
 
                             <input type="hidden" id="unitWater" name="unitWater" value="{{ $dormitory->dormitory_unitsWater }}"> {{-- ยนิดน้ำที่กำหนด --}}
@@ -210,17 +192,35 @@
                             <input type="hidden" id="rooms_unitsElectricity" name="rooms_unitsElectricity" value="{{ $customer->rooms_unitsElectricity  }}">    {{-- ยนิดไฟฟ้า เดือนที่แล้ว --}}
                             <input type="hidden" id="rooms_unitsWater" name="rooms_unitsWater" value="{{ $customer->rooms_unitsWater  }}"> {{-- ยนิดน้ำ เดือนที่แล้ว --}}
 
-
-
                             <input type="hidden" class="form-control col-sm-3" name="titles" id="titles" style="color: blue; font-size: 20px" value="{{  $titles }}">
+                        </div>
+
+                        <div class="form-group col-xs-12 col-sm-12 col-md-12 my-4">
+                            <label class="col-sm-2">สถานะการชำระเงิน</label>
+                            <div class = "col-sm-3">
+                                <select class="form-control" name="biil_status">
+                                    @if( $customer->biil_status == "")
+                                        <option value = "{{$customer->biil_status}}" style="color: blue;">
+                                            ค้างชำระ
+                                        </option>
+                                    @elseif($customer->biil_status == 1)
+                                        <option value = "{{$customer->biil_status}}" style="color: blue;">
+                                            จ่ายแล้ว
+                                        </option>
+                                    @endif
+                                    <option value="1">------ ชำระเงินเรียบร้อย ------</option>
+                                    <option value="2">------ เกินกำหนด ------</option>
+                                </select>
+                            </div>
                         </div>
 
                     </div>
                     <center>
                         {{-- <button type="reset" class="btn btn-secondary col-sm-2">ยกเลิก</button> --}}
                          {{-- มีปัญหาแก้ตรงนี้ --}}
-                         <button type="reset" class="btn btn-secondary col-sm-2">ยกเลิก</button>
+                        <button type="reset" class="btn btn-secondary col-sm-2">ยกเลิก</button>
                         <button type="submit" value="submit"  class="btn btn-success save col-sm-2 my-4">อัพเดท</button>
+
                     </center>
                 </form>
                 </div>
@@ -232,3 +232,4 @@
 </div>
 
 @endsection
+
