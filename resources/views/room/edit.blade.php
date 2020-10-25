@@ -66,7 +66,7 @@
                                     <option value="3">ชั้น 3</option>
                                     <option value="4">ชั้น 4</option>
                                     <option value="5">ชั้น 5</option>
-                                    <option value="5">ชั้น 6</option>
+                                    <option value="6">ชั้น 6</option>
                                 </select>
                             </div>
                         </div>
