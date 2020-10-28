@@ -76,35 +76,63 @@ class AllController extends Controller
             'bill_electricityBefore' => 'required',
 
         ]);
-        $date=date("Y-m-d H:i:s");
         $title=date("m-d");
-        $bill =  DB::table('bill')
-        ->insert([
-            'bill_code' => "ID".$request->id ."R".$request->room_id."MY".$request->titles,
-            'customer_id'=>$request->id,
-            'room_id' => $request->room_id,
-            'bill_title' => $request->titles,
+        $date=date("Y-m-d H:i:s");
+        $bill = new BillModel();
+        $bill->bill_code ="ID".$request->id ."R".$request->room_id."MY".$request->titles;
+        $bill->customer_id = $request->id;
+        $bill->room_id = $request->room_id;
+        $bill->bill_title = $request->titles;
 
-            'bill_unitsWater' => $request->unitWater,
-            'bill_serviceWater' => $request->unitServiceWater,
-            'bill_unitUsedWater' => $request->bill_unitsWater - $request->rooms_unitsWater, //หน่วยน้ำที่ใช้
-            'bill_water' =>   ($request->bill_unitsWater - $request->rooms_unitsWater ) * $request->unitServiceWater +
-                             ($request->bill_unitsWater - $request->rooms_unitsWater ) * $request->unitWater ,
+        $bill->bill_unitsWater = $request->unitWater;
+        $bill->bill_serviceWater = $request->unitServiceWater;
+        $bill->bill_unitUsedWater = $request->bill_unitsWater - $request->rooms_unitsWater;
+        $bill->bill_water = ($request->bill_unitsWater - $request->rooms_unitsWater ) * $request->unitServiceWater +
+                            ($request->bill_unitsWater - $request->rooms_unitsWater ) * $request->unitWater;
 
-            'bill_unitselEctricity' => $request->unitelEctricity,
-            'bill_serviceElectricity' => $request->unitServiceElectricity,
-            'bill_unitUsedEctricity' =>  $request->bill_unitselEctricity - $request->rooms_unitsElectricity, //หน่วยไฟฟ้าที่ใช้
-            'bill_electricity' =>   ($request->bill_unitselEctricity - $request->rooms_unitsElectricity ) * $request->unitServiceElectricity +
-                             ($request->bill_unitselEctricity - $request->rooms_unitsElectricity ) * $request->unitelEctricity ,
+        $bill->bill_unitselEctricity = $request->unitelEctricity;
+        $bill->bill_serviceElectricity = $request->unitServiceElectricity;
+        $bill->bill_unitUsedEctricity = $request->bill_unitselEctricity - $request->rooms_unitsElectricity;
+        $bill->bill_electricity = ($request->bill_unitselEctricity - $request->rooms_unitsElectricity ) * $request->unitServiceElectricity +
+                                  ($request->bill_unitselEctricity - $request->rooms_unitsElectricity ) * $request->unitelEctricity;
 
-            'bill_roomcost' =>  $request->roomcost,
-            'bill_date' =>  $date,
-            'created_at'=> $date,
+        $bill->bill_roomcost = $request->roomcost;
+        $bill->bill_date =  $date;
+        $bill->created_at = $date;
 
-            'bill_waterBefore' =>  $request->bill_waterBefore,
-            'bill_electricityBefore' =>  $request->bill_electricityBefore,
-        ]);
+        $bill->bill_waterBefore = $request->bill_waterBefore;
+        $bill->bill_electricityBefore = $request->bill_electricityBefore;
 
+
+        $bill->save();
+
+        // $title=date("m-d");
+        // $bill =  DB::table('bill')
+        // ->insert([
+        //     'bill_code' => "ID".$request->id ."R".$request->room_id."MY".$request->titles,
+        //     'customer_id'=>$request->id,
+        //     'room_id' => $request->room_id,
+        //     'bill_title' => $request->titles,
+
+        //     'bill_unitsWater' => $request->unitWater,
+        //     'bill_serviceWater' => $request->unitServiceWater,
+        //     'bill_unitUsedWater' => $request->bill_unitsWater - $request->rooms_unitsWater, //หน่วยน้ำที่ใช้
+        //     'bill_water' =>   ($request->bill_unitsWater - $request->rooms_unitsWater ) * $request->unitServiceWater +
+        //                      ($request->bill_unitsWater - $request->rooms_unitsWater ) * $request->unitWater ,
+
+        //     'bill_unitselEctricity' => $request->unitelEctricity,
+        //     'bill_serviceElectricity' => $request->unitServiceElectricity,
+        //     'bill_unitUsedEctricity' =>  $request->bill_unitselEctricity - $request->rooms_unitsElectricity, //หน่วยไฟฟ้าที่ใช้
+        //     'bill_electricity' =>   ($request->bill_unitselEctricity - $request->rooms_unitsElectricity ) * $request->unitServiceElectricity +
+        //                      ($request->bill_unitselEctricity - $request->rooms_unitsElectricity ) * $request->unitelEctricity ,
+
+        //     'bill_roomcost' =>  $request->roomcost,
+        //     'bill_date' =>  $date,
+        //     'created_at'=> $date,
+
+        //     'bill_waterBefore' =>  $request->bill_waterBefore,
+        //     'bill_electricityBefore' =>  $request->bill_electricityBefore,
+        // ]);
         DB::table('rooms')
             // ->join('rooms','rooms.rooms_code','=','customers.room_id')
             ->where('rooms_code','=',$request->room_id)
