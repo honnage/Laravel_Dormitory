@@ -22,8 +22,7 @@ class AllController extends Controller
         ->join('rooms','rooms.rooms_code','=','customers.room_id')
         ->select('*','customers.id as id','rooms.id as roomid')
         ->where('booking_statusResidence','=',1)
-
-
+        ->orderBy('rooms_code')
         ->get();
         $dormitorys = DormitoryModel::all();
         return view('room.floor',compact('dormitorys','customers','rooms','bills'));
