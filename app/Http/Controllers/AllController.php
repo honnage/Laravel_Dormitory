@@ -72,8 +72,8 @@ class AllController extends Controller
             // 'unitWater' => 'required',
             // 'unitServiceWater' => 'required',
 
-            // 'bill_unitselEctricity' => 'required',
-            // 'bill_serviceElectricity' => 'required',
+            'bill_waterBefore' => 'required',
+            'bill_electricityBefore' => 'required',
 
         ]);
         $date=date("Y-m-d H:i:s");
