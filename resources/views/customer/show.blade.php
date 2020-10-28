@@ -47,8 +47,8 @@
                     {{csrf_field()}}
                     <div class="form-inline">
                         <div class="form-group col-xs-12 col-sm-12 col-md-12 my-2">
-                            <label class="col-sm-2" style="float:right">ห้อง :</label>
-                            <input type="text" class="form-control col-sm-3" name="room_id" id="room_id" style="color: blue; font-size: 20px" value="{{ $customer->room_id }}" readonly>
+                            <label class="col-sm-2" style="float:right">ID :</label>
+                            <input type="text" class="form-control col-sm-3" name="room_id" id="room_id" style="color: blue; font-size: 20px" value="{{ $customer->id }}" readonly>
                             {{-- <label class="col-sm-1"></label> --}}
 
 
@@ -197,7 +197,7 @@
                             <label class="col-sm-2">หน่วยไฟฟ้า :</label>
                             <input type="text" class="form-control col-sm-2" name="dormitory_unitselEctricity" id="dormitory_unitselEctricity" style="color: blue; font-size: 20px" value="{{$dormitory->dormitory_unitselEctricity}}" readonly>
 
-                            <label class="col-sm-2">หน่วยค่าไฟฟ้า :</label>
+                            <label class="col-sm-2">หน่วยค่าบริการไฟฟ้า :</label>
                             <input type="text" class="form-control col-sm-2" name="dormitory_serviceElectricity" id="dormitory_serviceElectricity" style="color: blue; font-size: 20px" value="{{$dormitory->dormitory_serviceElectricity}}" readonly>
                             <label class="col-sm-2"></label>
                         </div>
